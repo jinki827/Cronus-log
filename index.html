@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【謎解き＋探索】クロノス-ログ - ホーム</title>
+    <style>
+        /* 画面を隠すためのクラス */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>【謎解き＋探索】クロノス-ログ</h1>
+
+    <!-- ログイン画面 -->
+    <div id="login-screen" class="card hidden">
+        <h2>ようこそ！</h2>
+        <p>プレイヤー名を入力してください。</p>
+        <input type="text" id="username-input" placeholder="名前">
+        <br>
+        <button onclick="login()">ゲームを始める</button>
+    </div>
+
+    <!-- Top画面 -->
+    <div id="top-screen" class="card hidden">
+        <h2>いざ！探索(^^♪</h2>
+        <p><span id="player-name"></span>さん </p>
+        <div class="quiz-menu">
+            <ul class="quiz-menu-mirai">
+                <p>第六層：未来</p>
+                <li><a href="./quiz1/quiz1.html">問題1</a></li>
+                <li><a href="./quiz2/quiz2.html">問題2</a></li>
+                <li><a href="./quiz3/quiz3.html">問題3</a></li>
+            </ul>
+            <ul class="quiz-menu-mirai">
+                <p>第五層：現世</p>
+                <li><a href="./quiz4/quiz4.html">問題4</a></li>
+                <li><a href="./quiz5/quiz5.html">問題5</a></li>
+                <li><a href="./quiz6/quiz6.html">問題6</a></li>
+            </ul>
+            <ul class="quiz-menu-mirai">
+                <p>第四層：過去</p>
+                <li><a href="./quiz7/quiz7.html">問題7</a></li>
+                <li><a href="./quiz8/quiz8.html">問題8</a></li>
+                <li><a href="./quiz9/quiz9.html">問題9</a></li>
+            </ul>
+        </div>
+        <br>
+        <button class="reset-btn" onclick="resetGame()">最初からやり直す。</button>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script>
+        let playerData;
+
+        // ページを開いた時の処理
+        window.onload = function () {
+            playerData = getPlayerData()
+
+            // データがあればTop画面、なければログイン画面を表示
+            if (playerData && playerData.name) {
+                showTopScreen();
+            } else {
+                document.getElementById("login-screen").classList.remove("hidden");
+            }
+        }
+
+        // ログインボタンを押した時の処理
+        function login() {
+            const nameInput = document.getElementById("username-input").value.trim();
+            if (!nameInput) return alert("名前を入力してください。");
+
+            // データを保存
+            playerData = { name: nameInput };
+            savePlayerData(playerData);
+
+            // ログイン画面を隠してTop画面を表示
+            document.getElementById("login-screen").classList.add("hidden");
+            showTopScreen();
+        }
+
+        // Top画面の表示処理
+        function showTopScreen() {
+            document.getElementById("player-name").innerText = playerData.name;
+            document.getElementById("top-screen").classList.remove("hidden")
+        }
+
+    </script>
+
+</body>
+
+</html>
