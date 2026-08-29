@@ -211,7 +211,7 @@ $$\text{今いるブランチ（マージ先）} \Leftarrow \text{\texttt{git me
 - ケースA: `main` の最新内容を feature（自分の作業中ブランチ）に取り込みたい時
 ```Bash
 # 1. マージ先（feature）に移動する
-git switch feature/12-stage1-html
+git switch feature/12-test
 
 # 2. マージ元（main）を指定して合体する
 git merge main
@@ -225,7 +225,7 @@ git merge main
 git switch main
 
 # 2. マージ元（feature）を指定して合体する
-git merge feature/12-stage1-html
+git merge feature/12-test
 ```
 **>結果** : `main` が更新され、`feature/12-...` の内容が合流します。
 <br>
@@ -247,7 +247,7 @@ git merge --no-ff <合体させたいブランチ名>
 - ケースA: `main` の最新内容を feature（自分の作業中ブランチ）に取り込みたい時
 ```Bash
 # 1. マージ先（feature）に移動する
-git switch feature/12-stage1-html
+git switch feature/12-test
 
 # 2. マージ元（main）を指定して合体する
 git git pull origin main
@@ -274,5 +274,105 @@ git pull --no-ff origin main
 <br>
 
 ## 4. プルリクエスト(PR)前にやること
+`pull request` (PR) とは、GitHub の機能の1つで、自分が作成・修正したコードを、チーム共有のメインコード（`main` ブランチなど）に取り込んでもらうための「レビュー（確認）と合体のお願い」機能です。
 
-作業がひと段落して、いよいよGitHubに自分のコードをアップする（Pushする）時の流れです。
+### 4.1. 作業ブランチをGitHub(リモート)へPushする
+- まずは、今の作業ブランチをGitHubへ上げます。3章の内容を参照してください。
+
+### 4.2. ローカルで作業ブランチにmain(develop)ブランチをマージする。
+これについては、方法がいくつかあります。好みだと思います。
+
+#### 4.2.1 `fetch`してそれぞれのローカルブランチを`merge`する。(丁寧)
+GitHub上の最新データを一旦「ダウンロードだけ」行い、自分のコードに影響を与えずに状況を確認してから慎重に合体させる方法です。
+
+1. GitHubの最新情報をダウンロード（手元のコードは変わらない）
+```Bash
+git fetch origin
+```
+
+2. ローカルの `main` ブランチに移動して`merge`する
+```Bash
+git switch main
+git merge origin/main
+```
+
+3. 自分の作業ブランチに戻り、最新の `main` を`merge`する
+```Bash
+git switch feature/12-test
+git merge main
+```
+
+
+#### 4.2.2 `main` または `develop` を `pull` してから作業ブランチに `merge` する(一般的)
+自分のPC内にある main ブランチを最新状態に更新してから、作業ブランチへ合体させる最も標準的な手順です。
+
+1. `main` ブランチに移動して `pull` する。
+```Bash
+git switch main
+git pull origin main
+```
+
+2. 自分の作業ブランチに戻り、最新の `main` を`merge`する
+```Bash
+git switch feature/12-test
+git merge main
+```
+
+
+#### 4.2. 作業ブランチに直接 `main` を `pull`（最速・手軽）
+ブランチを移動する手間を省き、作業ブランチにいる状態のままGitHubの最新 `main` を直接流し込む手順です。
+
+1. 今作業しているブランチにいる状態で直接実行する
+```Bash
+git pull origin main
+```
+
+
+<br>
+
+### 4.3. コンフリクト(conflict)が起きたら
+
+私にもわからん。
+AIに聴こう。
+
+
+### 4.4. 動作確認
+動作確認して、もう一度GitHub(リモート)の作業ブランチに`push`しておきましょう。
+
+### 4.5 Pull Request の作成
+1. GitHubのリポジトリページを開きます。
+   
+2. 画面上部に表示される黄色の枠内の 「Compare & pull request」
+   - ボタンをクリックします。※ボタンが出ない場合は、「Pull requests」タブ ➔ 「New pull request」の順にクリックし、compare: に自分のブランチ（feature/12-stage1-html）を選択します。
+  
+3. ブランチの向きを確認:base: main $\Leftarrow$ compare: feature/12-stage1-html になっているか確認します。
+
+4. PRの内容を入力する
+   1. タイトル
+   「種別＋Issue番号＋作業内容」を入力します。
+
+   2. 本文（説明欄）
+    例
+```
+## 概要
+ステージ1の謎解き画面（HTML/CSS）を作成しました。
+
+## 変更内容
+- stage1.html の骨組み作成
+- style.css にステージ1用のデザインを追加
+
+## 動作確認方法
+1. `stage1.html` をブラウザで開く
+2. タイトルと問題文が正しく表示されるか確認
+
+Closes #12
+```
+※末尾に Closes #Issue番号 を書いておくと、マージされた時に自動でIssueが終了処理されます。
+
+   3. 右側のサイドバー設定
+      - Reviewers（レビュー担当者）: コードを確認してほしいチームメンバーを選択
+      - Assignees（担当者）: 自分のアカウントを選択
+
+### 4.6 Pull Request が通ったら
+- ブランチを整理しましょう。原則削除しましょう
+- ローカルの `main` を再び `pull` しましょう
