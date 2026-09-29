@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4階：過去 - Quiz1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .quiz-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: #333;
+        }
+
+        .quiz-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            /* 縦に並べてタップエリアを広く */
+            gap: 12px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:active {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 16px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz-container">
+        <h1>4階：過去 【Quiz 1】</h1>
+
+        <img src="https://via.placeholder.com/350x200?text=Quiz1+Image" alt="問題画像" class="quiz-image">
+
+        <div class="input-group">
+            <input type="text" id="answer-input" placeholder="答えを入力">
+            <button onclick="checkAnswer()">送信</button>
+        </div>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const correctAnswer = "こたえ";
+
+        function checkAnswer() {
+            const input = document.getElementById('answer-input').value.trim();
+            const result = document.getElementById('result');
+
+            if (input === correctAnswer) {
+                result.textContent = "正解！";
+                result.style.color = "#28a745";
+            } else {
+                result.textContent = "残念、もう一回！";
+                result.style.color = "#dc3545";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
