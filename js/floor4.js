@@ -10,7 +10,7 @@ function onScanFailure(error) {
     // QRコードが見つからなかった場合
 }
 
-const scanner = new Html5QrcodeScanner(
+const scanner = new Html5Qrcode(
     "reader",
     {
         fps: 10,
