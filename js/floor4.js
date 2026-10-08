@@ -1,16 +1,34 @@
-function onScanSuccess(decodedText, decodedResult) {
-  // handle the scanned code as you like, for example:
-  console.log(`Code matched = ${decodedText}`, decodedResult);
+// 読み取り結果の管理
+const STORAGE_KEY = "foundCodes";
+let foundCodes = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+let scannedData = "";   // 直近に読み取った内容
+
+let html5QrCode = null;
+const container = document.getElementById('scanner-container');
+const resultEL = document.getElementById('result');
+
+function onScanSuccess(decodedText) {
+    scannedData = decodedText;
+    resultEl.textContent = decodedText;
+
+    // 重複しなければ保存
+    if (!foundCodes.includes(decodedText)) {
+        foundCodes.push(decodedText);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(foundCodes));
+    }
+
+    // 読み取り内容に応じた処理(例)
+    // if (decodedText === "rock1") { alert("第1問の岩を発見!"); }
+
+    closeScanner();
 }
+
 
 function onScanFailure(error) {
   // handle scan failure, usually better to ignore and keep scanning.
   // for example:
   console.warn(`Code scan error = ${error}`);
 }
-
-        let html5QrCode = null;
-        const container = document.getElementById('scanner-container');
 
         // 【起動ボタンを押したとき】
         document.getElementById('start-btn').addEventListener('click', () => {
@@ -44,7 +62,7 @@ function onScanFailure(error) {
         });
 
         // 【閉じるボタンを押したとき】
-        document.getElementById('stop-btn').addEventListener('click', () => {
+        document.getElementById('closeQrcodeButton').addEventListener('click', () => {
             closeScanner();
         });
 
