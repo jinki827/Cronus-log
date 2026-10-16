@@ -6,6 +6,7 @@ let scannedData = "";   // 直近に読み取った内容
 let html5QrCode = null;
 const container = document.getElementById('scanner-container');
 const resultEL = document.getElementById('result');
+const TARGET = "https://google.com/html5-qrcode";
 
 function onScanSuccess(decodedText) {
     scannedData = decodedText;
@@ -15,6 +16,10 @@ function onScanSuccess(decodedText) {
     if (!foundCodes.includes(decodedText)) {
         foundCodes.push(decodedText);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(foundCodes));
+    }
+
+    if(decodedText === TARGET) {
+        
     }
 
     // 読み取り内容に応じた処理(例)

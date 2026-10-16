@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+.login-logo {
+    height: 500px;
+    width: 250px;
+}
+
+.startBtn {
+    width: 150px;
+}
+
+.start {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    padding-left: 20px;
+    padding-top: 30px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signupBtn {
+    display: block;
+    margin: 250px 0 20px;
+}
+
+.loginBtn {
+    width: 150px;
+    padding-top: 80px;
+}
+
+.loginBtn img {
+    width: 100%;
+    height: auto;
+    display: block; 
+}
+
+.username-input {
+    background-color: #c0c0c0;
+    border-radius: 5px;
+    display: block;
+}
+
+.explanate {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.intro{
+    width: 200px;
+    margin-top: 200px;
+    height: auto;
+}
+
+.startGameBtn {
+    width: 150px;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.startGameBtn img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.footer {
+    background-color: #000;
+}
+
+.footer-menu {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.qrBtn {
+    margin-top: 6px;
+}
