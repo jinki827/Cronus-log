@@ -1,13 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>floor4:過去偏</title>
     <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
-    
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+    <script src="../js/floor4.js" defer></script>
+    <style>
+        /* スキャン画面全体のレイアウト */
+        #scanner-container {
+            display: none;
+            /* 初期状態は非表示 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* カメラの映像を表示するエリア */
+        #reader {
+            width: 300px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .btn {
+            margin-left: 50px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 2px solid black;
+            background: white;
+        }
+
+        .btn h2 {
+            font-size: 24px;
+        }
+
+        .quest-list img {
+            margin-left: 70px;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <header>
+
+    </header>
+    <main>
+        <h1>第四層：過去</h1>
+        <p><a href="../index.html">戻る</a></p>
+        <button type="button" id="start-btn" class="btn">
+            <h2>QRコードを読み取る</h2>
+        </button>
+
+        <p>最後に読み取った内容:<span id="result">まだありません</span></p>
+
+        <div id="scanner-container">
+            <div id="reader"></div>
+            <button type="button" id="closeQrcodeButton" class="btn">閉じる</button>
+        </div>
+
+        
+        <ul class="quest-list">
+            <li><a href="./Quiz1.html">第1問</a><br><img src="../images/rock.png"></li><br>
+            <li><a href="./Quiz2.html">第2問</a><br><img src="../images/rock.png"></li><br>
+            <li><a href="./Quiz3.html">第3問</a><br><img src="../images/rock.png"></li><br>
+        </ul>
+    </main>
 </body>
+
 </html>
