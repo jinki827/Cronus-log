@@ -73,7 +73,7 @@ function onScanFailure(error) {
         });
 
         // 【閉じるボタンを押したとき】
-        document.getElementById('stop-btn').addEventListener('click', () => {
+        document.getElementById('closeQrcodeButton').addEventListener('click', () => {
             closeScanner();
         });
 
