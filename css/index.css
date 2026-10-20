@@ -72,6 +72,36 @@
     display: block;
 }
 
+.floor {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.floor li {
+    padding-top: 50px;
+    width: 100%;
+}
+
+.floor img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.floor6 {
+    position: relative;
+}
+
+.jump-floor6 {
+    position: absolute;
+    top: 55%;
+    left: 8%;
+    width: 84%;
+    height: 25%;
+}
+
 .footer {
     background-color: #000;
 }
@@ -84,6 +114,19 @@
     padding-bottom: 10px;
 }
 
+.home-img {
+    padding-top: 6px;
+    width: 44px;
+}
+
+.floor4-img,
+.floor5-img,
+.floor6-img {
+    padding-top: 8px;
+
+}
+
 .qrBtn {
     margin-top: 6px;
+    padding-top: 5px;
 }
