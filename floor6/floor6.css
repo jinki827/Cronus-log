@@ -35,13 +35,34 @@ header {
 }
 
 main {
-
+  padding-top: 160px;
+  background-color: #080C0D;
   .view-container {
-    background-color: #080C0D;
     padding-bottom: 10px;
     .view-panel {
       .introduction {
         position: relative;
+        width: 100%;
+        padding: 0 50px;
+        
+        .introduction-card-bg {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(217, 217, 217, 0.5);
+          z-index: 1;
+        }
+
+        .introduction-card {
+          position: relative;
+          width: 100%;
+          background-color: rgba(217, 217, 217, 0.5);
+          z-index: 2;
+          color: fff;
+        }
+
       }
     }
   }
