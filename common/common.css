@@ -65,9 +65,7 @@ a {
             border-radius: 8px;
             overflow: hidden;
         }
-        .btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
+
+        .stop-btn {
+          color: white;
         }
