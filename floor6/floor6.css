@@ -1,5 +1,51 @@
 @charset "UTF-8";
 
 body {
-    color: #333;
+  color: #333;
+
+}
+
+header {
+  position: fixed;
+  width: 100%;
+
+  background: linear-gradient(to bottom, #6B6449 0%, #080C0D 60%);
+  .header-inner{
+    padding-bottom: 20px;
+    color: #F2E41B;
+  }
+
+  .quiz-tab{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 22px;
+    /* background-color: #080C0D; */
+    
+    .tab-button {
+      color: #8B8B8B;
+      cursor: pointer;
+  
+      &.is-active {
+        color: #F2E41B;
+        border-bottom: 1px solid #F2E41B;
+      }
+    }
+  
+  }
+}
+
+main {
+
+  .view-container {
+    background-color: #080C0D;
+    padding-bottom: 10px;
+    .view-panel {
+      .introduction {
+        width: 100px;
+        height: 100px;
+        background-color: #7a7a7a;
+        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
 }

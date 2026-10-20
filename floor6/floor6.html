@@ -1,43 +1,93 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>floor6:未来偏</title>
-    <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
-    <link rel="stylesheet" href="floor6.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>floor6:未来偏</title>
+  <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
+  <link rel="stylesheet" href="floor6.css">
+
 </head>
+
 <body>
-    <!-- header -->
-    <header>
-        <div class="header-inner">
-            <h1>6階：未来</h1>
-            <p class="logo-text">クロノス-ログ</p>
-        </div>
-    </header>
+  <!-- header -->
+  <header>
+    <!-- header-title -->
+    <div class="header-inner">
+      <h1>6階：未来</h1>
+      <p class="logo-text">クロノス-ログ</p>
+      <svg width="100%" height="32" viewBox="0 0 379 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 27.5H225.793M225.793 27.5H226M225.793 27.5L225.646 27.6464M225.793 27.5L249.293 4M0 31.5H226M249.293 4L249.646 3.64645M249.293 4H249M249.293 4H379M249 0.5H379"
+          stroke="#D4D4D4" />
+      </svg>
+    
+    </div>
 
-    <!-- main -->
-    <main>
-        <!-- 問題切り替えタブ -->
-        <ul class="quiz-tab">
-            <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-home-f6">ホーム</button></li>
-            <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q1-f6">Q1</button></li>
-            <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q2-f6">Q2</button></li>
-            <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q3-f6">Q3</button></li>
-            <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-boss-f6">ボス問</button></li>
-        </ul>
+    <!-- 問題切り替えタブ -->
+    <ul class="quiz-tab">
+      <li class="quiz-tab-item"><button type="button" class="tab-button is-active" data-target="view-home-f6">ホーム</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q1-f6">Q1</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q2-f6">Q2</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q3-f6">Q3</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-boss-f6">ボス問</button></li>
+    </ul>
+  </header>
 
-        <!-- メイン画面 -->
-        <div class="view-container">
-            <!-- ホーム画面 -->
-            <section id="view-hone-f6" class="view-panel">
-                <!-- 説明(introduction) -->
-                <div class="introduction"></div>
-                <!-- hint -->
-                <div class="hint"></div>
-            </section>
+  <!-- main -->
+  <main>
+
+    <!-- メイン画面 -->
+    <div class="view-container">
+      <!-- ホーム画面 -->
+      <section id="view-hone-f6" class="view-panel">
+        <!-- 説明(introduction) -->
+        <div class="introduction">
+          <div class="introduction-card-bg"></div>
+          <div class="introduction-card"></div>
         </div>
-    </main>
+        <!-- hint -->
+        <div class="quize-area"></div>
+      </section>
+      <!-- Q1画面 -->
+      <section id="view-q1-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction"></div>
+        <!-- q1問題文 -->
+        <div class="quize-area"></div>
+      </section>
+
+      <!-- Q2画面 -->
+      <section id="view-q2-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction"></div>
+        <!-- q2問題文 -->
+        <div class="quize-area"></div>
+      </section>
+      
+      <!-- Q3画面 -->
+      <section id="view-q3-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction"></div>
+        <!-- q3問題文 -->
+        <div class="quize-area"></div>
+      </section>
+
+      <!-- boss画面 -->
+      <section id="view-boss-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction"></div>
+        <!-- boss問題文 -->
+        <div class="quize-area"></div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- footer -->
+  <footer>
+
+  </footer>
 </body>
+
 </html>
