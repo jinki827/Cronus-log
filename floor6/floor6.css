@@ -41,10 +41,7 @@ main {
     padding-bottom: 10px;
     .view-panel {
       .introduction {
-        width: 100px;
-        height: 100px;
-        background-color: #7a7a7a;
-        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.6);
+        position: relative;
       }
     }
   }
