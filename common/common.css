@@ -18,3 +18,32 @@ a {
 .hidden {
   display: none !important;
 }
+
+.footer {
+    background-color: #000;
+}
+
+.footer-menu {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.home-img {
+    padding-top: 6px;
+    width: 44px;
+}
+
+.floor4-img,
+.floor5-img,
+.floor6-img {
+    padding-top: 8px;
+
+}
+
+.qrBtn {
+    margin-top: 6px;
+    padding-top: 5px;
+}
