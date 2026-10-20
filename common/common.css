@@ -47,3 +47,27 @@ a {
     margin-top: 6px;
     padding-top: 5px;
 }
+
+#scanner-container {
+            display: none; /* 初期状態は非表示 */
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        /* カメラの映像を表示するエリア */
+        #reader {
+            width: 300px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
