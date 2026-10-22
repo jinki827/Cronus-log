@@ -1,18 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>floor6:未来偏</title>
-    <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>floor6:未来偏</title>
+  <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
+  <link rel="stylesheet" href="floor6.css">
+
 </head>
+
 <body>
-    <h1>第六層：未来</h1>
-    <p><a href="../index.html">戻る</a></p>
-    <ul class="quest-list">
-        <li><a href="./Quiz1.html">第1問</a></li>
-        <li><a href="./Quiz2.html">第2問</a></li>
-        <li><a href="./Quiz3.html">第3問</a></li>
+  <!-- header -->
+  <header>
+    <!-- header-title -->
+    <div class="header-inner">
+      <div class="header-title">
+        <h1>6階：未来</h1>
+        <div class="horizon-line"></div>
+      </div>
+      <div class="header-left-fixed">
+        <svg viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none" class="diagonal">
+          <path d="M0 100 L100 0" stroke="#D4D4D4" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <div class="header-logo">
+          <p class="logo-text">クロノス-ログ</p>
+          <div class="horizon-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 問題切り替えタブ -->
+    <ul class="quiz-tab">
+      <li class="quiz-tab-item"><button type="button" class="tab-button is-active"
+          data-target="view-home-f6">ホーム</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q1-f6">Q1</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q2-f6">Q2</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q3-f6">Q3</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-boss-f6">ボス問</button></li>
+    </ul>
+  </header>
+
+  <!-- main -->
+  <main>
+
+    <!-- メイン画面 -->
+    <div class="view-container">
+      <!-- ホーム画面 -->
+      <section id="view-hone-f6" class="view-panel">
+        <!-- 説明(introduction) -->
+        <div class="introduction">
+          <div class="introduction-card">
+            <p>
+              ここは、60年後の収束未来の1つです。ここでのインシデントは、クロエ(仮)の奪われた記憶を奪還することです。
+            </p>
+            <p>
+              時空管理局 AI クロノス
+            </p>
+          </div>
+        </div>
+        <!-- hint -->
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2>ヒント</h2>
+              <p>
+                ６階のフリースペースで、QRコードを探そう。敵が潜んでいるかもしれません。
+              </p>
+            </div>  
+          </div>
+
+        </div>
+      </section>
+      <!-- Q1画面 -->
+      <section id="view-q1-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction"></div>
+        <!-- q1問題文 -->
+        <div class="quiz-area"></div>
+      </section>
+
+      <!-- Q2画面 -->
+      <section id="view-q2-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction"></div>
+        <!-- q2問題文 -->
+        <div class="quiz-area"></div>
+      </section>
+
+      <!-- Q3画面 -->
+      <section id="view-q3-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction"></div>
+        <!-- q3問題文 -->
+        <div class="quiz-area"></div>
+      </section>
+
+      <!-- boss画面 -->
+      <section id="view-boss-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction"></div>
+        <!-- boss問題文 -->
+        <div class="quiz-area"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer>
+
+  </footer>
 </body>
+
 </html>
