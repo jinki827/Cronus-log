@@ -1,20 +1,5 @@
 @charset "UTF-8";
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  color: #333;
-}
-
-a {
-  color: #333;
-  text-decoration: none;
-}
-
 .hidden {
   display: none !important;
 }
@@ -49,23 +34,28 @@ a {
 }
 
 #scanner-container {
-            display: none; /* 初期状態は非表示 */
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        /* カメラの映像を表示するエリア */
-        #reader {
-            width: 300px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+  display: none;
+  /* 初期状態は非表示 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-        .stop-btn {
-          color: white;
-        }
+/* カメラの映像を表示するエリア */
+#reader {
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stop-btn {
+  color: white;
+}

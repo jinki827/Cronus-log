@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>floor6:未来偏</title>
   <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
-  <link rel="stylesheet" href="floor6.css">
+  <link rel="stylesheet" href="/floor6/floor6.css">
+  <link rel="stylesheet" href="/common/common.css">
 
 </head>
 
@@ -21,7 +22,7 @@
       </div>
       <div class="header-left-fixed">
         <svg viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none" class="diagonal">
-          <path d="M0 100 L100 0" stroke="#D4D4D4" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <path d="M0 100 L100 0" stroke="#D4D4D4" stroke-width="1" vector-effect="non-scaling-stroke" />
         </svg>
         <div class="header-logo">
           <p class="logo-text">クロノス-ログ</p>
@@ -67,7 +68,7 @@
               <p>
                 ６階のフリースペースで、QRコードを探そう。敵が潜んでいるかもしれません。
               </p>
-            </div>  
+            </div>
           </div>
 
         </div>
@@ -108,7 +109,21 @@
 
   <!-- footer -->
   <footer>
-
+    <div class="footer">
+      <ul class="footer-menu">
+        <li><button type="button" class="home-btn"><img src="/index/images/HOME.svg" alt="ホーム"
+              class="home-img"></button></li>
+        <li><a href="/floor4/floor4.html"><img src="/index/images/floor4.svg" alt="4層" class="floor4-img"></a></li>
+        <li><a href="/floor5/floor5.html"><img src="/index/images/floor5.svg" alt="5層" class="floor5-img"></a></li>
+        <li><a href="/floor6/floor6.html"><img src="/index/images/floor6.svg" alt="6層" class="floor6-img"></a></li>
+        <li><button type="button" id="start-btn" class="qrBtn"><img src="/index/images/QR.svg" alt="QRコード"></button>
+        </li>
+      </ul>
+    </div>
+    <div id="scanner-container">
+      <div id="reader" width="600px"></div>
+      <button type="button" id="closeQrcodeButton" class="stop-btn">閉じる</button>
+    </div>
   </footer>
 </body>
 
