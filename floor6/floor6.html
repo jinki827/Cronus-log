@@ -74,7 +74,7 @@
         </div>
       </section>
       <!-- Q1画面 -->
-      <section id="view-q1-f6" class="view-panel">
+      <section id="view-q1-f6" class="view-panel hidden">
         <!-- 説明(introduction) -->
         <div class="introduction">
           <div class="introduction-card">
@@ -112,25 +112,107 @@
       <!-- Q2画面 -->
       <section id="view-q2-f6" class="view-panel hidden">
         <!-- 説明(introduction) -->
-        <div class="introduction"></div>
+        <div class="introduction">
+          <div class="introduction-card">
+            <p class="introduction-text">
+              クロエのペットAIを見つけました。
+              何かメッセージが残っているようです。確認してみましょう。
+            </p>
+            <p class="sign-off">
+              ~~ 時空管理局 AI クロノス ~~
+            </p>
+          </div>
+        </div>
         <!-- q2問題文 -->
-        <div class="quiz-area"></div>
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2>Q2</h2>
+              <p>
+                クロエのペットAIが呟いた謎のメッセージ。
+              </p>
+              <div class="quiz-content">
+                「わたしは毎日、あなたの一日をぎゅっと小さな箱に詰めて保存します。<br>でも誰かがその箱を勝手に開けて売ってしまったら、もう元には戻せません。<br>わたしの名前は、データを集めておく小さな保管庫<br>――あなたの身近な機械にも入っています。」
+              </div>
+            </div>
+            <div class="answer-area">
+              <input type="text" class="answer-input" id="f6-q2-answer-input" placeholder="回答欄">
+              <button type="button" class="answer-button" id="f6-q2-answer-button">回答</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Q3画面 -->
       <section id="view-q3-f6" class="view-panel hidden">
         <!-- 説明(introduction) -->
-        <div class="introduction"></div>
+        <div class="introduction">
+          <div class="introduction-card">
+            <p class="introduction-text">
+              クロエが作成した "ファイル" を発見しました。<br>
+              しかし、"ファイル" には鍵がかかっています。解除できるでしょうか？
+            </p>
+            <p class="sign-off">
+              ~~ 時空管理局 AI クロノス ~~
+            </p>
+          </div>
+        </div>
         <!-- q3問題文 -->
-        <div class="quiz-area"></div>
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2>Q3</h2>
+              <p>
+                クロエの秘密ファイルには鍵がかかっていた。中のメモは、アルファベットが全て3文字分後ろにずらされた暗号文だった(A→D, B→Eのように)。元の単語(ローマ字)が示すひらがな2文字の言葉を入力せよ。
+              </p>
+              <div class="quiz-content">
+                KLPLWVX
+              </div>
+            </div>
+            <div class="answer-area">
+              <input type="text" class="answer-input" id="f6-q3-answer-input" placeholder="回答欄">
+              <button type="button" class="answer-button" id="f6-q3-answer-button">回答</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- boss画面 -->
-      <section id="view-boss-f6" class="view-panel hidden">
+      <section id="view-boss-f6" class="view-panel">
         <!-- 説明(introduction) -->
-        <div class="introduction"></div>
+        <div class="introduction">
+          <div class="introduction-card">
+            <p class="introduction-text">
+              クロエの "記憶" をついに発見しました。<br>
+              しかし、強固な "パスワードロック" がかかっています。
+            </p>
+            <p class="sign-off">
+              ~~ 時空管理局 AI クロノス ~~
+            </p>
+          </div>
+        </div>
         <!-- boss問題文 -->
-        <div class="quiz-area"></div>
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2>Boss</h2>
+              <p>
+                ボスの端末に表示された【5つの計算式】。 <br>次の式を計算し、導き出される文字を「ひらがな3文字」を入力せよ。
+              </p>
+              <div class="quiz-content">
+                ・ 1文字目 ＝ ( 5 ＋ 8 )<br>
+                ・ 2文字目 ＝ ( 3 × 3 ) → I<br>
+                ・ 3文字目 ＝ ( 20 － 2 )<br>
+                ・ 4文字目 ＝ ( 4 ÷ 4 )<br>
+                ・ 5文字目 ＝ ( 18 ÷ 2 ) → I<br>
+              </div>
+            </div>
+            <div class="answer-area">
+              <input type="text" class="answer-input" id="f6-q3-answer-input" placeholder="回答欄">
+              <button type="button" class="answer-button" id="f6-q3-answer-button">回答</button>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   </main>

@@ -179,6 +179,7 @@ body {
               display: flex;
               flex-direction: column;
               gap: 30px;
+              margin-bottom: 20px;
 
               h2 {
                 color: #F2E41B;
