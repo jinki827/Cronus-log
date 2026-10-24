@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="./floor6.css">
   <link rel="stylesheet" href="../common/common.css">
 
+
+  <script src="./flor6.js" defer></script>
+  <script src="../common/storage.js"></script>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript" defer></script>
+
 </head>
 
 <body>
@@ -33,8 +38,7 @@
 
     <!-- 問題切り替えタブ -->
     <ul class="quiz-tab">
-      <li class="quiz-tab-item"><button type="button" class="tab-button is-active"
-          data-target="view-home-f6">ホーム</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button is-active" data-target="view-home-f6">ホーム</button></li>
       <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q1-f6">Q1</button></li>
       <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q2-f6">Q2</button></li>
       <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q3-f6">Q3</button></li>
@@ -48,7 +52,7 @@
     <!-- メイン画面 -->
     <div class="view-container">
       <!-- ホーム画面 -->
-      <section id="view-home-f6" class="view-panel hidden">
+      <section id="view-home-f6" class="view-panel">
         <!-- 説明(introduction) -->
         <div class="introduction">
           <div class="introduction-card">
@@ -178,7 +182,7 @@
       </section>
 
       <!-- boss画面 -->
-      <section id="view-boss-f6" class="view-panel">
+      <section id="view-boss-f6" class="view-panel hidden">
         <!-- 説明(introduction) -->
         <div class="introduction">
           <div class="introduction-card">
