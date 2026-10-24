@@ -182,7 +182,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to top, #6B6449 0%, #080C0D 60%);
+    background: linear-gradient(to top, #7c7041 0%, #080C0D 60%);
     padding-bottom: env(safe-area-inset-bottom, 0px);
 
     .footer-menu {
