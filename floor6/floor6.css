@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 body {
-  color: #333;
   overflow-x: hidden;
 
   header {
@@ -83,7 +82,6 @@ body {
       display: flex;
       justify-content: space-between;
       padding: 20px 22px;
-      /* background-color: #080C0D; */
   
       .tab-button {
         color: #8B8B8B;
@@ -101,6 +99,7 @@ body {
   main {
     padding-top: 200px;
     background-color: #080C0D;
+    height: 100dvh;
   
     .view-container {
       padding-bottom: 10px;
@@ -175,6 +174,19 @@ body {
         }
       }
 
+    }
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, #7c7041 0%, #080C0D 60%);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    .footer-menu {
+      color: #fff;
     }
   }
 }
