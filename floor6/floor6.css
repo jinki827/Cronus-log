@@ -1,20 +1,23 @@
 @charset "UTF-8";
 
 body {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
-
+  background-color: #080C0D;
+  
   header {
-    position: fixed;
-    top: 0;
-    left: 0;
+    flex-shrink: 0;
     width: 100%;
     background: linear-gradient(to bottom, #6B6449 0%, #080C0D 60%);
+    z-index: 1;
   
     .header-inner {
       display: flex;
       align-items: flex-end;
       width: 100%;
-      padding: 50px 10px 10px;
+      padding: 30px 10px 10px;
       color: #F2E41B;
   
       .header-title {
@@ -97,12 +100,15 @@ body {
   }
   
   main {
-    padding-top: 200px;
-    background-color: #080C0D;
-    height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    min-height: 0;
   
     .view-container {
-      padding-bottom: 10px;
+      padding:10px;
+      max-width: 600px;
+      margin: 0 auto;
   
       .view-panel {
         .introduction {
@@ -154,11 +160,13 @@ body {
         .quiz-area {
           padding: 0 20px;
           filter: drop-shadow(5px 5px 1px rgba(186, 186, 166, 0.25));
-          
+
           .quiz-card {
+            display: flex;
+            flex-direction: column;
             background-color: #808080;
             padding: 20px;
-            min-height: 470px;
+            min-height: 370px;
             clip-path: polygon(
               0 0,
               100% 0,
@@ -170,11 +178,40 @@ body {
             .quiz-text {
               display: flex;
               flex-direction: column;
-              gap: 20px;
+              gap: 30px;
 
               h2 {
                 color: #F2E41B;
                 font-size: 20px;
+              }
+
+              .quiz-content {
+                background-color: #d9d9d9;
+                border: solid 1px #000;
+                padding: 30px;
+                font-size: 18px;
+              }
+            }
+            .answer-area {
+              margin-top: auto;
+              margin-bottom: 10px;
+              display: flex;
+              gap: 15px;
+              .answer-input {
+                flex: 1;
+                background-color: #fff;
+                color: #000;
+                padding: 12px 16px;
+                outline: none;
+                &::placeholder{
+                  color: #aaa;
+                }
+              }
+              .answer-button {
+                width: 100px;
+                background-color: #f2e41b;
+                text-align: center;
+                transition: opacity 0.2s;
               }
             }
           }
@@ -187,9 +224,7 @@ body {
   }
 
   footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    flex-shrink: 0;
     width: 100%;
     background: linear-gradient(to top, #7c7041 0%, #080C0D 60%);
     padding-bottom: env(safe-area-inset-bottom, 0px);
