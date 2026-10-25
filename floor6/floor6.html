@@ -38,11 +38,11 @@
 
     <!-- 問題切り替えタブ -->
     <ul class="quiz-tab">
-      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'view-home-f6')" class="tab-button is-active">ホーム</button></li>
-      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'f6-q1')" class="tab-button">Q1</button></li>
-      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'f6-q2')" class="tab-button">Q2</button></li>
-      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'f6-q3')" class="tab-button">Q3</button></li>
-      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'f6-boss')" class="tab-button">Boss</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button is-active">ホーム</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button">Q1</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button">Q2</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button">Q3</button></li>
+      <li class="quiz-tab-item"><button type="button" class="tab-button">Boss</button></li>
     </ul>
   </header>
 
@@ -75,43 +75,6 @@
             </div>
           </div>
 
-        </div>
-      </section>
-
-      <!-- 未開放画面 -->
-      <section id="view-lock-f6" class="view-panel hidden">
-        <!-- 説明(introduction) -->
-        <div class="introduction">
-          <div class="introduction-card">
-            <div class="lock-img">
-              <!-- <img src="../index/images/qr-icon.svg" alt="QR code reader"> -->
-              <svg class="qr-icon" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
-                fill="#e3e3e3">
-                <path
-                  d="M80-698v-182h182v66.67H146.67V-698H80Zm0 618v-182h66.67v115.33H262V-80H80Zm618 0v-66.67h115.33V-262H880v182H698Zm115.33-618v-115.33H698V-880h182v182h-66.67Zm-108 444h62v62h-62v-62Zm0-124h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62-62h62v62h-62v-62Zm124-124h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62-62h62v62h-62v-62Zm248-328v248h-248v-248h248ZM440-440v248H192v-248h248Zm0-328v248H192v-248h248Zm-53.33 522.67v-141.34H245.33v141.34h141.34Zm0-328v-141.34H245.33v141.34h141.34Zm327.33 0v-141.34H572.67v141.34H714Z" />
-              </svg>
-              <p>scan-QR</p>
-            </div>
-          </div>
-        </div>
-        <!-- hint -->
-        <div class="quiz-area">
-          <div class="quiz-card">
-            <div class="quiz-text">
-              <h2></h2>
-              <div class="lock">
-                <svg class="lock-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="7.5" y="15.625" width="25" height="18" fill="#4B4A4A" />
-                  <path
-                    d="M19.9995 7.875C23.3955 7.875 26.4546 11.0534 26.4546 15.375C26.4546 19.6966 23.3955 22.875 19.9995 22.875C16.6037 22.8747 13.5454 19.6964 13.5454 15.375C13.5454 11.0536 16.6037 7.87528 19.9995 7.875Z"
-                    stroke="#4B4A4A" stroke-width="3" />
-                  <rect x="19" y="24" width="2" height="5" rx="1" fill="white" />
-                  <circle cx="20" cy="23" r="3" fill="white" />
-                </svg>
-              </div>
-            </div>
-          </div>
-      
         </div>
       </section>
 
@@ -256,6 +219,44 @@
           </div>
         </div>
       </section>
+
+      <!-- 未開放画面 -->
+      <section id="view-lock-f6" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction">
+          <div class="introduction-card">
+            <div class="lock-img">
+              <!-- <img src="../index/images/qr-icon.svg" alt="QR code reader"> -->
+              <svg class="qr-icon" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                fill="#e3e3e3">
+                <path
+                  d="M80-698v-182h182v66.67H146.67V-698H80Zm0 618v-182h66.67v115.33H262V-80H80Zm618 0v-66.67h115.33V-262H880v182H698Zm115.33-618v-115.33H698V-880h182v182h-66.67Zm-108 444h62v62h-62v-62Zm0-124h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62-62h62v62h-62v-62Zm124-124h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62-62h62v62h-62v-62Zm248-328v248h-248v-248h248ZM440-440v248H192v-248h248Zm0-328v248H192v-248h248Zm-53.33 522.67v-141.34H245.33v141.34h141.34Zm0-328v-141.34H245.33v141.34h141.34Zm327.33 0v-141.34H572.67v141.34H714Z" />
+              </svg>
+              <p>scan-QR</p>
+            </div>
+          </div>
+        </div>
+        <!-- hint -->
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2></h2>
+              <div class="lock">
+                <svg class="lock-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="7.5" y="15.625" width="25" height="18" fill="#4B4A4A" />
+                  <path
+                    d="M19.9995 7.875C23.3955 7.875 26.4546 11.0534 26.4546 15.375C26.4546 19.6966 23.3955 22.875 19.9995 22.875C16.6037 22.8747 13.5454 19.6964 13.5454 15.375C13.5454 11.0536 16.6037 7.87528 19.9995 7.875Z"
+                    stroke="#4B4A4A" stroke-width="3" />
+                  <rect x="19" y="24" width="2" height="5" rx="1" fill="white" />
+                  <circle cx="20" cy="23" r="3" fill="white" />
+                </svg>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+
     </div>
   </main>
 
