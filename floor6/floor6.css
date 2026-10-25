@@ -1,20 +1,23 @@
 @charset "UTF-8";
 
 body {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
-
+  background-color: #080C0D;
+  
   header {
-    position: fixed;
-    top: 0;
-    left: 0;
+    flex-shrink: 0;
     width: 100%;
     background: linear-gradient(to bottom, #6B6449 0%, #080C0D 60%);
+    z-index: 1;
   
     .header-inner {
       display: flex;
       align-items: flex-end;
       width: 100%;
-      padding: 50px 10px 10px;
+      padding: 30px 10px 10px;
       color: #F2E41B;
   
       .header-title {
@@ -80,16 +83,26 @@ body {
   
     .quiz-tab {
       display: flex;
-      justify-content: space-between;
-      padding: 20px 22px;
-  
-      .tab-button {
-        color: #8B8B8B;
-        cursor: pointer;
-  
-        &.is-active {
-          color: #F2E41B;
-          border-bottom: 1px solid #F2E41B;
+      align-items: stretch;
+      padding: 20px 20px 15px;
+      gap: 2px;
+      
+      li {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+
+        .tab-button {
+          width: 100%;
+          text-align: center;
+          color: #8B8B8B;
+          cursor: pointer;
+          padding: 5px 0;
+    
+          &.is-active {
+            color: #F2E41B;
+            border-bottom: 1px solid #F2E41B;
+          }
         }
       }
   
@@ -97,12 +110,15 @@ body {
   }
   
   main {
-    padding-top: 200px;
-    background-color: #080C0D;
-    height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    min-height: 0;
   
     .view-container {
-      padding-bottom: 10px;
+      padding:10px;
+      max-width: 600px;
+      margin: 0 auto;
   
       .view-panel {
         .introduction {
@@ -114,8 +130,11 @@ body {
   
           .introduction-card {
             position: relative;
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            padding: 20px;
+            min-height: 150px;
+            padding: 20px 20px 20px;
             z-index: 2;
             color: #000;
   
@@ -139,6 +158,26 @@ body {
               top: 3px;
               left: 3px;
             }
+
+            .sign-off {
+              text-align: right;
+              margin-top: auto;
+            }
+
+            .lock-img {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 5px;
+
+              .qr-icon {
+                width: 70px;
+                height: auto;
+                fill: #4B4A4A;
+              }
+            }
   
           }
         }
@@ -146,10 +185,13 @@ body {
         .quiz-area {
           padding: 0 20px;
           filter: drop-shadow(5px 5px 1px rgba(186, 186, 166, 0.25));
-          
+
           .quiz-card {
+            display: flex;
+            flex-direction: column;
             background-color: #808080;
             padding: 20px;
+            min-height: 370px;
             clip-path: polygon(
               0 0,
               100% 0,
@@ -161,11 +203,52 @@ body {
             .quiz-text {
               display: flex;
               flex-direction: column;
-              gap: 20px;
+              gap: 30px;
+              margin-bottom: 20px;
+              flex: 1;
 
               h2 {
                 color: #F2E41B;
                 font-size: 20px;
+              }
+
+              .quiz-content {
+                background-color: #d9d9d9;
+                border: solid 1px #000;
+                padding: 30px;
+                font-size: 18px;
+              }
+
+              .lock {
+                flex: 1;
+                margin: 50px auto;
+                .lock-icon {
+                  width: 120px;
+                  height: auto;
+                }
+              }
+            }
+
+            .answer-area {
+              margin-top: auto;
+              margin-bottom: 10px;
+              display: flex;
+              gap: 15px;
+              .answer-input {
+                flex: 1;
+                background-color: #fff;
+                color: #000;
+                padding: 12px 16px;
+                outline: none;
+                &::placeholder{
+                  color: #aaa;
+                }
+              }
+              .answer-button {
+                width: 100px;
+                background-color: #f2e41b;
+                text-align: center;
+                transition: opacity 0.2s;
               }
             }
           }
@@ -178,9 +261,7 @@ body {
   }
 
   footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    flex-shrink: 0;
     width: 100%;
     background: linear-gradient(to top, #7c7041 0%, #080C0D 60%);
     padding-bottom: env(safe-area-inset-bottom, 0px);

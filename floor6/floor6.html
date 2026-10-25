@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="./floor6.css">
   <link rel="stylesheet" href="../common/common.css">
 
+
+  <script src="./flor6.js" defer></script>
+  <script src="../common/storage.js" defer></script>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript" defer></script>
+
 </head>
 
 <body>
@@ -33,12 +38,11 @@
 
     <!-- 問題切り替えタブ -->
     <ul class="quiz-tab">
-      <li class="quiz-tab-item"><button type="button" class="tab-button is-active"
-          data-target="view-home-f6">ホーム</button></li>
-      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q1-f6">Q1</button></li>
-      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q2-f6">Q2</button></li>
-      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-q3-f6">Q3</button></li>
-      <li class="quiz-tab-item"><button type="button" class="tab-button" data-target="view-boss-f6">ボス問</button></li>
+      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'view-home-f6')" class="tab-button is-active">ホーム</button></li>
+      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'f6-q1')" class="tab-button">Q1</button></li>
+      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'f6-q2')" class="tab-button">Q2</button></li>
+      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'f6-q3')" class="tab-button">Q3</button></li>
+      <li class="quiz-tab-item"><button type="button" onclick="switchTab(this, 'f6-boss')" class="tab-button">Boss</button></li>
     </ul>
   </header>
 
@@ -48,15 +52,15 @@
     <!-- メイン画面 -->
     <div class="view-container">
       <!-- ホーム画面 -->
-      <section id="view-hone-f6" class="view-panel">
+      <section id="view-home-f6" class="view-panel">
         <!-- 説明(introduction) -->
         <div class="introduction">
           <div class="introduction-card">
-            <p>
+            <p class="introduction-text">
               ここは、60年後の収束未来の1つです。ここでのインシデントは、クロエ(仮)の奪われた記憶を奪還することです。
             </p>
-            <p>
-              時空管理局 AI クロノス
+            <p class="sign-off">
+              ~~ 時空管理局 AI クロノス ~~
             </p>
           </div>
         </div>
@@ -73,36 +77,184 @@
 
         </div>
       </section>
-      <!-- Q1画面 -->
-      <section id="view-q1-f6" class="view-panel hidden">
+
+      <!-- 未開放画面 -->
+      <section id="view-lock-f6" class="view-panel hidden">
         <!-- 説明(introduction) -->
-        <div class="introduction"></div>
+        <div class="introduction">
+          <div class="introduction-card">
+            <div class="lock-img">
+              <!-- <img src="../index/images/qr-icon.svg" alt="QR code reader"> -->
+              <svg class="qr-icon" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                fill="#e3e3e3">
+                <path
+                  d="M80-698v-182h182v66.67H146.67V-698H80Zm0 618v-182h66.67v115.33H262V-80H80Zm618 0v-66.67h115.33V-262H880v182H698Zm115.33-618v-115.33H698V-880h182v182h-66.67Zm-108 444h62v62h-62v-62Zm0-124h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62-62h62v62h-62v-62Zm124-124h62v62h-62v-62Zm-62 62h62v62h-62v-62Zm-62-62h62v62h-62v-62Zm248-328v248h-248v-248h248ZM440-440v248H192v-248h248Zm0-328v248H192v-248h248Zm-53.33 522.67v-141.34H245.33v141.34h141.34Zm0-328v-141.34H245.33v141.34h141.34Zm327.33 0v-141.34H572.67v141.34H714Z" />
+              </svg>
+              <p>scan-QR</p>
+            </div>
+          </div>
+        </div>
+        <!-- hint -->
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2></h2>
+              <div class="lock">
+                <svg class="lock-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="7.5" y="15.625" width="25" height="18" fill="#4B4A4A" />
+                  <path
+                    d="M19.9995 7.875C23.3955 7.875 26.4546 11.0534 26.4546 15.375C26.4546 19.6966 23.3955 22.875 19.9995 22.875C16.6037 22.8747 13.5454 19.6964 13.5454 15.375C13.5454 11.0536 16.6037 7.87528 19.9995 7.875Z"
+                    stroke="#4B4A4A" stroke-width="3" />
+                  <rect x="19" y="24" width="2" height="5" rx="1" fill="white" />
+                  <circle cx="20" cy="23" r="3" fill="white" />
+                </svg>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+
+      <!-- Q1画面 -->
+      <section id="f6-q1" class="view-panel hidden">
+        <!-- 説明(introduction) -->
+        <div class="introduction">
+          <div class="introduction-card">
+            <p class="introduction-text">
+              探索者様。クロエの時計を発見致しました。
+              何か手掛かりになるかもしれません。しかし、これは壊れているようです...。
+            </p>
+            <p class="sign-off">
+              ~~ 時空管理局 AI クロノス ~~
+            </p>
+          </div>
+        </div>
         <!-- q1問題文 -->
-        <div class="quiz-area"></div>
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2>Q1</h2>
+              <p>
+                クロエの時計が壊れ、表示されているのは数字の列だけだった。アルファベットの順番(A=1, B=2, C=3…Z=26)に対応する文字に変換し、現れた単語を入力せよ。
+              </p>
+              <div class="quiz-content">
+                <p>
+                  20 - 9 - 13 - 5
+                </p>
+              </div>
+            </div>
+            <div class="answer-area">
+              <input type="text" class="answer-input" id="f6-q1-answer-input" placeholder="回答欄">
+              <button type="button" class="answer-button" id="f6-q1-answer-button">回答</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Q2画面 -->
-      <section id="view-q2-f6" class="view-panel hidden">
+      <section id="f6-q2" class="view-panel hidden">
         <!-- 説明(introduction) -->
-        <div class="introduction"></div>
+        <div class="introduction">
+          <div class="introduction-card">
+            <p class="introduction-text">
+              クロエのペットAIを見つけました。
+              何かメッセージが残っているようです。確認してみましょう。
+            </p>
+            <p class="sign-off">
+              ~~ 時空管理局 AI クロノス ~~
+            </p>
+          </div>
+        </div>
         <!-- q2問題文 -->
-        <div class="quiz-area"></div>
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2>Q2</h2>
+              <p>
+                クロエのペットAIが呟いた謎のメッセージ。
+              </p>
+              <div class="quiz-content">
+                「わたしは毎日、あなたの一日をぎゅっと小さな箱に詰めて保存します。<br>でも誰かがその箱を勝手に開けて売ってしまったら、もう元には戻せません。<br>わたしの名前は、データを集めておく小さな保管庫<br>――あなたの身近な機械にも入っています。」
+              </div>
+            </div>
+            <div class="answer-area">
+              <input type="text" class="answer-input" id="f6-q2-answer-input" placeholder="回答欄">
+              <button type="button" class="answer-button" id="f6-q2-answer-button">回答</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Q3画面 -->
-      <section id="view-q3-f6" class="view-panel hidden">
+      <section id="f6-q3" class="view-panel hidden">
         <!-- 説明(introduction) -->
-        <div class="introduction"></div>
+        <div class="introduction">
+          <div class="introduction-card">
+            <p class="introduction-text">
+              クロエが作成した "ファイル" を発見しました。<br>
+              しかし、"ファイル" には鍵がかかっています。解除できるでしょうか？
+            </p>
+            <p class="sign-off">
+              ~~ 時空管理局 AI クロノス ~~
+            </p>
+          </div>
+        </div>
         <!-- q3問題文 -->
-        <div class="quiz-area"></div>
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2>Q3</h2>
+              <p>
+                クロエの秘密ファイルには鍵がかかっていた。中のメモは、アルファベットが全て3文字分後ろにずらされた暗号文だった(A→D, B→Eのように)。元の単語(ローマ字)が示すひらがな2文字の言葉を入力せよ。
+              </p>
+              <div class="quiz-content">
+                KLPLWVX
+              </div>
+            </div>
+            <div class="answer-area">
+              <input type="text" class="answer-input" id="f6-q3-answer-input" placeholder="回答欄">
+              <button type="button" class="answer-button" id="f6-q3-answer-button">回答</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- boss画面 -->
-      <section id="view-boss-f6" class="view-panel hidden">
+      <section id="f6-boss" class="view-panel hidden">
         <!-- 説明(introduction) -->
-        <div class="introduction"></div>
+        <div class="introduction">
+          <div class="introduction-card">
+            <p class="introduction-text">
+              クロエの "記憶" をついに発見しました。<br>
+              しかし、強固な "パスワードロック" がかかっています。
+            </p>
+            <p class="sign-off">
+              ~~ 時空管理局 AI クロノス ~~
+            </p>
+          </div>
+        </div>
         <!-- boss問題文 -->
-        <div class="quiz-area"></div>
+        <div class="quiz-area">
+          <div class="quiz-card">
+            <div class="quiz-text">
+              <h2>Boss</h2>
+              <p>
+                ボスの端末に表示された【5つの計算式】。 <br>次の式を計算し、導き出される文字を「ひらがな3文字」を入力せよ。
+              </p>
+              <div class="quiz-content">
+                ・ 1文字目 ＝ ( 5 ＋ 8 )<br>
+                ・ 2文字目 ＝ ( 3 × 3 ) → I<br>
+                ・ 3文字目 ＝ ( 20 － 2 )<br>
+                ・ 4文字目 ＝ ( 4 ÷ 4 )<br>
+                ・ 5文字目 ＝ ( 18 ÷ 2 ) → I<br>
+              </div>
+            </div>
+            <div class="answer-area">
+              <input type="text" class="answer-input" id="f6-q3-answer-input" placeholder="回答欄">
+              <button type="button" class="answer-button" id="f6-q3-answer-button">回答</button>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   </main>
@@ -114,7 +266,7 @@
         <li><a href="../index.html" class="home-btn"><img src="../index/images/home-icon.svg" alt="ホーム"><p>ホーム</p></a></li>
         <li><a href="./floor4/floor4.html" class="floor4-btn"><img src="../index/images/floor-icon.svg" alt="4層"><p>4階</p></a></li>
         <li><a href="./floor5/floor5.html" class="floor5-btn"><img src="../index/images/floor-icon.svg" alt="5層"><p>5階</p></a></li>
-        <li><a href="./floor6/floor6.html" class="floor6-btn"><img src="../index/images/floor-icon.svg" alt="6層"><p>6階</p></a></li>
+        <li><a href="./floor6.html" class="floor6-btn"><img src="../index/images/floor-icon.svg" alt="6層"><p>6階</p></a></li>
         <li><button type="button" id="start-btn" class="qrBtn"><img src="../index/images/qr-icon.svg" alt="QRコード"><p>QR</p></button></li>
       </ul>
     </div>
