@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>【謎解き＋探索】クロノス-ログ - ホーム</title>
   <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
-  <link rel="stylesheet" href="./common/common.css">
-  <link rel="stylesheet" href="./index/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Serif+JP:wght@200..900&family=Shippori+Mincho&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Serif+JP:wght@200..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./common/common.css">
+  <link rel="stylesheet" href="./index/index.css">
+
   <script src="./common/storage.js" defer></script>
   <script src="./index/script.js" defer></script>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript" defer></script>
@@ -80,22 +80,34 @@
           <!-- floor5 -->
           <div class="floor5">
             <div class="jump-floor">
-              <p class="floor-title">5階:現世</p><a href="./floor6/floor5.html"><button class="floor5-exploreBtn">
-                  <p2 class="floor-text">探索する →</p2>
-                </button></a>
-              <img src="./index/images/quiz-release.svg" alt=""><img src="./index/images/quiz-release.svg" alt=""><img
-                src="./index/images/quiz-release.svg" alt="">
+              <p class="floor-title">5階:現世</p>
+              <a href="./floor6/floor5.html">
+                <button class="floor5-exploreBtn">
+                  <p class="floor-text">探索する →</p>
+                </button>
+              </a>
+              <div class="quiz-release">
+                <img src="./index/images/quiz-release.svg" alt="">
+                <img src="./index/images/quiz-release.svg" alt="">
+                <img src="./index/images/quiz-release.svg" alt="">
+              </div>
             </div>
           </div>
   
           <!-- floor4 -->
           <div class="floor4">
             <div class="jump-floor4">
-              <p class="floor4-title">4階:過去</p><a href="./floor6/floor4.html"><button class="floor4-exploreBtn">
-                  <p3 class="floor4-text">探索する →</p3>
-                </button></a>
-              <img src="./index/images/quiz-release.svg" alt=""><img src="./index/images/quiz-release.svg" alt=""><img
-                src="./index/images/quiz-release.svg" alt="">
+              <p class="floor4-title">4階:過去</p>
+              <a href="./floor6/floor4.html">
+                <button class="floor4-exploreBtn">
+                  <p class="floor4-text">探索する →</p>
+                </button>
+              </a>
+              <div class="quiz-release">
+                <img src="./index/images/quiz-release.svg" alt="">
+                <img src="./index/images/quiz-release.svg" alt="">
+                <img src="./index/images/quiz-release.svg" alt="">
+              </div>
             </div>
           </div>
         </div>
@@ -105,21 +117,11 @@
       <!-- top-footer -->
       <div class="top-footer">
         <ul class="footer-menu">
-          <li><a href="./index.html" class="home-btn"><img src="/index/images/home-icon.svg" alt="ホーム">
-              <p>ホーム</p>
-            </a></li>
-          <li><a href="./floor4/floor4.html" class="floor4-btn"><img src="./index/images/floor-icon.svg" alt="4層">
-              <p>4階</p>
-            </a></li>
-          <li><a href="./floor5/floor5.html" class="floor5-btn"><img src="./index/images/floor-icon.svg" alt="5層">
-              <p>5階</p>
-            </a></li>
-          <li><a href="./floor6/floor6.html" class="floor6-btn"><img src="./index/images/floor-icon.svg" alt="6層">
-              <p>6階</p>
-            </a></li>
-          <li><button type="button" id="start-btn" class="qrBtn"><img src="./index/images/qr-icon.svg" alt="QRコード">
-              <p>QR</p>
-            </button></li>
+          <li><a href="./index.html" class="home-btn"><img src="/index/images/home-icon.svg" alt="ホーム"><p>ホーム</p></a></li>
+          <li><a href="./floor4/floor4.html" class="floor4-btn"><img src="./index/images/floor-icon.svg" alt="4層"><p>4階</p></a></li>
+          <li><a href="./floor5/floor5.html" class="floor5-btn"><img src="./index/images/floor-icon.svg" alt="5層"><p>5階</p></a></li>
+          <li><a href="./floor6/floor6.html" class="floor6-btn"><img src="./index/images/floor-icon.svg" alt="6層"><p>6階</p></a></li>
+          <li><button type="button" id="start-btn" class="qrBtn"><img src="./index/images/qr-icon.svg" alt="QRコード"><p>QR</p></button></li>
         </ul>
       </div>
       <div id="scanner-container">
