@@ -1,39 +1,32 @@
 // 仮データ
 const quizzes = {
   "f6-q1": {unlock: false, cleared: false},
-  "f6-q2": {unlock: true, cleared: false},
+  "f6-q2": {unlock: false, cleared: false},
   "f6-q3": {unlock: true, cleared: false},
   "f6-boss": {unlock: true, cleared: false}
 }
 
 // 画面の切り替え
-function switchTab(button, targetId) {
-  // quiz-tab のボタンの色を切り替え
-  document.querySelectorAll(".quiz-tab button")
-    .forEach((btn) => btn.classList.remove("is-active"));
-  button.classList.add("is-active");
+const tabButton = document.querySelectorAll(".tab-button");
+const viewPanel = document.querySelectorAll(".view-panel");
+tabButton.forEach((btn, index) => {
+  btn.addEventListener("click", function(){
+    // タブボタンの制御
+    tabButton.forEach((_btn) => _btn.classList.remove("is-active"));
+    this.classList.add("is-active");
 
-  // 指定した画面を初期化
-  let displayID = targetId;
-
-  // unlockの判定 -> 未開放なら未開放画面にする
-  if (quizzes[targetId] && quizzes[targetId].unlock === false) {
-    displayID = "view-lock-f6";
+    // viewPanelの表示制御
+    viewPanel.forEach((panel) => panel.classList.add("hidden"))
     
-    // 未開放画面の<h2>要素の中身をtabのテキストと同じにする。
-    const lockTitle = document.querySelector("#view-lock-f6 .quiz-text h2");
-    if (lockTitle) {
-      lockTitle.textContent = button.textContent;
+    let targetViewPanelID = viewPanel[index].id;
+    if (quizzes[targetViewPanelID] && quizzes[targetViewPanelID].unlock === false) {
+      index = 5;
+      console.log(btn);
     }
-  }
 
-  // 一旦、全体をhidden
-  document.querySelectorAll(".view-panel")
-    .forEach((panel) => panel.classList.add("hidden"));
-  
-  // displayID のview-panelのhiddenを外す
-  const targetPanel = document.getElementById(displayID);
-  if (targetPanel) {
-    targetPanel.classList.remove("hidden");
-  }
-}
+    const lockTitle = document.querySelector("#view-lock-f6 .quiz-text h2");
+    lockTitle.textContent = btn.textContent;
+    viewPanel[index].classList.remove("hidden")
+  });
+});
+
