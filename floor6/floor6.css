@@ -83,16 +83,26 @@ body {
   
     .quiz-tab {
       display: flex;
-      justify-content: space-between;
-      padding: 20px 22px;
-  
-      .tab-button {
-        color: #8B8B8B;
-        cursor: pointer;
-  
-        &.is-active {
-          color: #F2E41B;
-          border-bottom: 1px solid #F2E41B;
+      align-items: stretch;
+      padding: 20px 20px 15px;
+      gap: 2px;
+      
+      li {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+
+        .tab-button {
+          width: 100%;
+          text-align: center;
+          color: #8B8B8B;
+          cursor: pointer;
+          padding: 5px 0;
+    
+          &.is-active {
+            color: #F2E41B;
+            border-bottom: 1px solid #F2E41B;
+          }
         }
       }
   
