@@ -1,3 +1,12 @@
 // 画面の切り替え
-const tabButtons = document.querySelectorAll(".quiz-tab button");
-const panels = document.querySelectorAll(".view-panel");
+function switchTab(button, targetId) {
+    document.querySelectorAll(".quiz-tab button").forEach((btn) => 
+        btn.classList.remove("is-active")
+    );
+    button.classList.add("is-active");
+
+    document.querySelectorAll(".view-panel").forEach((panel) =>
+        panel.classList.add("hidden")
+    );
+    document.getElementById(targetId).classList.remove("hidden");
+}
