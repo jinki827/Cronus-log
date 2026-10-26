@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>【謎解き＋探索】クロノス-ログ - ホーム</title>
   <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
-  <link rel="stylesheet" href="./common/common.css">
-  <link rel="stylesheet" href="./index/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Serif+JP:wght@200..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./common/common.css">
+  <link rel="stylesheet" href="./index/index.css">
+
   <script src="./common/storage.js" defer></script>
   <script src="./index/script.js" defer></script>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript" defer></script>
@@ -20,52 +22,111 @@
   <main>
 
     <!-- 開始画面 -->
-    <div id="start-screen" class="start screen hidden">
-      <img src="./index/images/logo.svg" alt="クロノス-ログ" class="login-logo">
-      <button type="button"><img src="./index/images/Start-button.svg" alt="スタート" class="startBtn"
-          id="startBtn"></button>
-    </div>
+    <section id="start-screen" class="start opening-screen screen hidden">
+      <div class="opening-screen-inner">
+        <h1 class="logo">クロノス-ログ</h1>
+        <p class="logo-sub">Chronos-log</p>
+      </div>
+      <button type="button" id="startBtn">Start</button>
+    </section>
 
     <!-- ログイン画面 -->
-    <div id="login-screen" class="card screen hidden">
-      <img src="./index/images/SingUp.svg" alt="サインアップ" class="signupBtn" id="signupBtn">
-      <input type="text" id="username-input" class="username-input">
-      <button onclick="login()" class="loginBtn" id="loginBtn"><img src="./index/images/login-button.svg"alt="ログイン"></button>
-    </div>
+    <section id="login-screen" class="login opening-screen screen hidden">
+      <div class="opening-screen-inner">
+        <h1>Sing Up</h1>
+        <p>名前を教えてください。<br>※ニックネーム</p>
+        <input type="text" id="username-input" class="username-input">
+      </div>
+      <button onclick="login()" class="loginBtn" id="loginBtn">log in</button>
+    </section>
 
     <!-- 説明画面 -->
-    <div id="explanate-screen" class="explanate screen hidden">
-      <img src="./index/images/intro-text.svg" class="intro" alt="イントロ">
-      <button type="button" onclick="showScreen('top-screen')" class="startGameBtn"><img
-          src="./index/images/Start-game-button.svg" alt=""></button>
-    </div>
+    <section id="explanate-screen" class="explanate opening-screen screen hidden">
+      <div class="opening-screen-inner">
+        <p class="hello">バンタンへようこそ！</p>
+        <p>時空調査の協力に感謝致します。</p>
+        <p>私はデジタル庁 時空管理局AI クロノスです。</p>
+        <p>これからあなた様には、4・5・6階の各層に隠された”謎”を探し出し、それぞれの時代の問題(インシデント)解決に取り組んで頂きます。</p>
+        <p>まずは隠されたQRコードを探し、問題を解放して下さい。</p>
+        <p class="sign-off">-- 時空管理局 AI クロノス</p>
+      </div>
+      <button type="button" onclick="showScreen('top-screen')" class="startGameBtn">Start Game</button>
+    </section>
 
     <!-- Top画面 -->
-    <div id="top-screen" class="top screen hidden">
-      <button class="reset-btn" onclick="resetGame()">最初からやり直す。</button>
-      <div class="title"><a href="./index.html"><img src="./index/images/logo.svg" alt="クロノス-ログ"></a></div>
-      <ul class="floor">
-        <li class="floor6"><div class="jump-floor6"><p class="floor6-title">6階:未来</p><a href="./floor6/floor6.html"><button class="floor6-exploreBtn"><p1 class="floor6-text">探索する →</p1></button></a>
-          <img src="./index/images/quiz-release.svg" alt=""><img src="./index/images/quiz-release.svg" alt=""><img src="./index/images/quiz-release.svg" alt=""></div></li>
-        <li class="floor5"><div class="jump-floor5"><p class="floor5-title">5階:現世</p><a href="./floor6/floor5.html"><button class="floor5-exploreBtn"><p2 class="floor5-text">探索する →</p2></button></a>
-        <img src="./index/images/quiz-release.svg" alt=""><img src="./index/images/quiz-release.svg" alt=""><img src="./index/images/quiz-release.svg" alt=""></div></li>
-        <li class="floor4"><div class="jump-floor4"><p class="floor4-title">4階:過去</p><a href="./floor6/floor4.html"><button class="floor4-exploreBtn"><p3 class="floor4-text">探索する →</p3></button></a>
-        <img src="./index/images/quiz-release.svg" alt=""><img src="./index/images/quiz-release.svg" alt=""><img src="./index/images/quiz-release.svg" alt=""></div></li>
-      </ul>
-      <div class="footer">
+    <section id="top-screen" class="top screen hidden">
+      <!-- top-header -->
+      <div class="top-header">
+        <div class="title">
+          <a href="./index.html">
+            <h1 class="logo">クロノス-ログ</h1>
+            <p class="logo-sub">Chronos-log</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- top-main -->
+      <div class="top-main">
+        <!-- floor select -->
+        <div class="floor">
+  
+          <!-- floor6 -->
+          <div class="jump-floor floor6">
+            <h2>6階:未来</h2>
+            <a href="./floor6/floor6.html">
+              探索する →
+            </a>
+            <div class="quiz-release">
+              <img src="./index/images/quiz-release.svg" alt="">
+              <img src="./index/images/quiz-release.svg" alt="">
+              <img src="./index/images/quiz-release.svg" alt="">
+            </div>
+          </div>
+  
+          <!-- floor5 -->
+          <div class="jump-floor floor5">
+            <h2>5階:現世</h2>
+            <a href="./floor6/floor5.html">
+              探索する →
+            </a>
+            <div class="quiz-release">
+              <img src="./index/images/quiz-release.svg" alt="">
+              <img src="./index/images/quiz-release.svg" alt="">
+              <img src="./index/images/quiz-release.svg" alt="">
+            </div>
+          </div>
+  
+          <!-- floor4 -->
+          <div class="jump-floor floor4">
+            <h2>4階:過去</h2>
+            <a href="./floor6/floor4.html">
+              探索する →
+            </a>
+            <div class="quiz-release">
+              <img src="./index/images/quiz-release.svg" alt="">
+              <img src="./index/images/quiz-release.svg" alt="">
+              <img src="./index/images/quiz-release.svg" alt="">
+            </div>
+          </div>
+        </div>
+        <button class="reset-btn" onclick="resetGame()">最初からやり直す。</button>
+      </div>
+
+      <!-- top-footer -->
+      <div class="top-footer">
         <ul class="footer-menu">
-        <li><a href="./index.html" class="home-btn"><img src="/index/images/home-icon.svg" alt="ホーム"><p>ホーム</p></a></li>
-        <li><a href="./floor4/floor4.html" class="floor4-btn"><img src="./index/images/floor-icon.svg" alt="4層"><p>4階</p></a></li>
-        <li><a href="./floor5/floor5.html" class="floor5-btn"><img src="./index/images/floor-icon.svg" alt="5層"><p>5階</p></a></li>
-        <li><a href="./floor6/floor6.html" class="floor6-btn"><img src="./index/images/floor-icon.svg" alt="6層"><p>6階</p></a></li>
-        <li><button type="button" id="start-btn" class="qrBtn"><img src="./index/images/qr-icon.svg" alt="QRコード"><p>QR</p></button></li>
+          <li><a href="./index.html" class="home-btn"><img src="/index/images/home-icon.svg" alt="ホーム"><p>ホーム</p></a></li>
+          <li><a href="./floor4/floor4.html" class="floor4-btn"><img src="./index/images/floor-icon.svg" alt="4層"><p>4階</p></a></li>
+          <li><a href="./floor5/floor5.html" class="floor5-btn"><img src="./index/images/floor-icon.svg" alt="5層"><p>5階</p></a></li>
+          <li><a href="./floor6/floor6.html" class="floor6-btn"><img src="./index/images/floor-icon.svg" alt="6層"><p>6階</p></a></li>
+          <li><button type="button" id="start-btn" class="qrBtn"><img src="./index/images/qr-icon.svg" alt="QRコード"><p>QR</p></button></li>
         </ul>
       </div>
       <div id="scanner-container">
         <div id="reader" width="600px"></div>
         <button type="button" id="closeQrcodeButton" class="stop-btn">閉じる</button>
       </div>
-    </div><!-- /#top-screen -->
+    </section><!-- /#top-screen -->
 
   </main>
 </body>
