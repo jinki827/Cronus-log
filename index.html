@@ -32,14 +32,16 @@
 
     <!-- ログイン画面 -->
     <section id="login-screen" class="card screen hidden">
-      <img src="./index/images/SingUp.svg" alt="サインアップ" class="signupBtn" id="signupBtn">
-      <input type="text" id="username-input" class="username-input">
-      <button onclick="login()" class="loginBtn" id="loginBtn"><img src="./index/images/login-button.svg"
-          alt="ログイン"></button>
+      <div class="cord-content">
+        <h1>Sing Up</h1>
+        <p>名前を教えてください。<br>※ニックネーム</p>
+        <input type="text" id="username-input" class="username-input">
+      </div>
+      <button onclick="login()" class="loginBtn" id="loginBtn">log in</button>
     </section>
 
     <!-- 説明画面 -->
-    <section id="explanate-screen" class="explanate screen hidden">
+    <section id="explanate-screen" class="explanate screen">
       <img src="./index/images/intro-text.svg" class="intro" alt="イントロ">
       <button type="button" onclick="showScreen('top-screen')" class="startGameBtn"><img
           src="./index/images/Start-game-button.svg" alt=""></button>

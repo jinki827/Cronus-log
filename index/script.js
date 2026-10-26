@@ -9,20 +9,20 @@ function showScreen(id) {
 }
 
 // ページを開いた時の処理
-window.onload = function () {
-  playerData = getPlayerData();
-  // データがあればTop画面、なければスタート画面を表示
-  if (playerData && playerData.name) {
-    showScreen("top-screen");
-  } else {
-    showScreen("start-screen");
-  }
-};
+// window.onload = function () {
+//   playerData = getPlayerData();
+//   // データがあればTop画面、なければスタート画面を表示
+//   if (playerData && playerData.name) {
+//     showScreen("top-screen");
+//   } else {
+//     showScreen("start-screen");
+//   }
+// };
 
-// スタートボタン → ログイン画面
-document.getElementById("startBtn").addEventListener("click", function () {
-  showScreen("login-screen");
-});
+// // スタートボタン → ログイン画面
+// document.getElementById("startBtn").addEventListener("click", function () {
+//   showScreen("login-screen");
+// });
 
 // ログインボタン → 説明画面
 function login() {
