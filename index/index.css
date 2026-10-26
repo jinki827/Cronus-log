@@ -5,6 +5,41 @@ main {
   overflow-y: auto;
   font-family: 'Shippori Mincho', serif;
 
+  .start {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 250px;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      h1 {
+        font-size: 30px;
+        font-weight: 800;
+      }
+
+      p {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+
+    button {
+      padding: 15px 80px;
+      border-radius: 10px;
+      background-color: #E8E8E8;
+      font-size: 25px;
+      font-weight: 600;
+    }
+
+  }
+
   .top {
     height: 100dvh;
     display: flex;
