@@ -233,22 +233,37 @@ body {
               margin-top: auto;
               margin-bottom: 10px;
               display: flex;
-              gap: 15px;
-              .answer-input {
-                flex: 1;
-                background-color: #fff;
-                color: #000;
-                padding: 12px 16px;
-                outline: none;
-                &::placeholder{
-                  color: #aaa;
-                }
+              flex-direction: column;
+              gap: 5px;
+              
+              .error-message {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: #f2e41b;
+                font-size: 14px;
+                font-weight: 200;
               }
-              .answer-button {
-                width: 100px;
-                background-color: #f2e41b;
-                text-align: center;
-                transition: opacity 0.2s;
+
+              .answer-wrapper {
+                display: flex;
+                gap:15px;
+                .answer-input {
+                  flex: 1;
+                  background-color: #fff;
+                  color: #000;
+                  padding: 12px 16px;
+                  outline: none;
+                  &::placeholder{
+                    color: #aaa;
+                  }
+                }
+                .answer-button {
+                  width: 100px;
+                  background-color: #f2e41b;
+                  text-align: center;
+                  transition: opacity 0.2s;
+                }
               }
             }
           }
