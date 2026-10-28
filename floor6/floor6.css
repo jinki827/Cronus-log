@@ -210,6 +210,12 @@ body {
               h2 {
                 color: #F2E41B;
                 font-size: 20px;
+
+                .clear {
+                  margin-left: 20px;
+                  color: #49dd5a; 
+                  letter-spacing: 0.1em;
+                }
               }
 
               .quiz-content {

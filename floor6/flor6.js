@@ -1,7 +1,7 @@
 // 仮データ
 const quizzes = {
-  "f6-q1": {unlock: true, cleared: false},
-  "f6-q2": {unlock: true, cleared: false},
+  "f6-q1": {unlock: true, cleared: true},
+  "f6-q2": {unlock: true, cleared: true},
   "f6-q3": {unlock: true, cleared: false},
   "f6-boss": {unlock: true, cleared: false}
 }
@@ -36,31 +36,25 @@ tabButton.forEach((btn, index) => {
 
 // 回答送信時
 const answerButton = document.querySelectorAll(".answer-button");
-console.log(answerButton);
-console.log(quizAnswer);
 answerButton.forEach((ans_btn) => {
   ans_btn.addEventListener("click", function(){
 
     // 
     const inputAnswer = this.closest(".answer-wrapper").querySelector(".answer-input");
-    console.log(inputAnswer);
+    // console.log(inputAnswer);
     const userAnswer = inputAnswer.value.trim();
-    console.log(userAnswer);
+    // console.log(userAnswer);
     const sectionEl = this.closest("section");
     const quizId = sectionEl.id
-    console.log(quizId);
+    // console.log(quizId);
 
     const correctAnswer = quizAnswer[quizId];
-    console.log(correctAnswer);
-
+    // console.log(correctAnswer);
     const errorMessage = this.closest(".answer-area").querySelector(".error-message");
-    console.log(errorMessage.classList);
     
     if (userAnswer === correctAnswer) {
-      console.log('${quizId}:正解');
       errorMessage.classList.add("hidden");
     } else {
-      console.log('${quizId}:不正解');
       errorMessage.classList.remove("hidden");
     }
     if (userAnswer){
@@ -68,6 +62,7 @@ answerButton.forEach((ans_btn) => {
   });
 });
 
+// 答えを再入力したときに、不正解のメッセージログを消す。
 const answerInputs = document.querySelectorAll(".answer-input");
 answerInputs.forEach((input) => {
   input.addEventListener("input", function() {
@@ -76,4 +71,15 @@ answerInputs.forEach((input) => {
       errorMessage.classList.add("hidden");
     }
   })
+});
+
+
+// 回答があってたら、クリア済みにする。
+const sections = document.querySelectorAll("section");
+sections.forEach((section) => {
+  const quizResult = quizzes[section.id];
+  if (quizResult && quizResult.cleared) {
+    const clearEl = section.querySelector(".clear");
+    clearEl.classList.remove("hidden")
+  }
 });
