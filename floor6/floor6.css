@@ -243,6 +243,12 @@ body {
                 color: #f2e41b;
                 font-size: 14px;
                 font-weight: 200;
+                min-height: 24px;
+
+                &.hidden {
+                  display: flex !important;
+                  visibility: hidden;
+                }
               }
 
               .answer-wrapper {

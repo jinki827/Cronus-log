@@ -1,9 +1,14 @@
 // 仮データ
 const quizzes = {
-  "f6-q1": {unlock: false, cleared: false},
-  "f6-q2": {unlock: false, cleared: false},
+  "f6-q1": {unlock: true, cleared: false},
+  "f6-q2": {unlock: true, cleared: false},
   "f6-q3": {unlock: true, cleared: false},
   "f6-boss": {unlock: true, cleared: false}
+}
+const quizAnswer = {
+  "f6-q1": "aaa",
+  "f6-q2": "bbb",
+  "f6-q3": "ccc",
 }
 
 // 画面の切り替え
@@ -21,7 +26,6 @@ tabButton.forEach((btn, index) => {
     let targetViewPanelID = viewPanel[index].id;
     if (quizzes[targetViewPanelID] && quizzes[targetViewPanelID].unlock === false) {
       index = 5;
-      console.log(btn);
     }
 
     const lockTitle = document.querySelector("#view-lock-f6 .quiz-text h2");
@@ -30,3 +34,46 @@ tabButton.forEach((btn, index) => {
   });
 });
 
+// 回答送信時
+const answerButton = document.querySelectorAll(".answer-button");
+console.log(answerButton);
+console.log(quizAnswer);
+answerButton.forEach((ans_btn) => {
+  ans_btn.addEventListener("click", function(){
+
+    // 
+    const inputAnswer = this.closest(".answer-wrapper").querySelector(".answer-input");
+    console.log(inputAnswer);
+    const userAnswer = inputAnswer.value.trim();
+    console.log(userAnswer);
+    const sectionEl = this.closest("section");
+    const quizId = sectionEl.id
+    console.log(quizId);
+
+    const correctAnswer = quizAnswer[quizId];
+    console.log(correctAnswer);
+
+    const errorMessage = this.closest(".answer-area").querySelector(".error-message");
+    console.log(errorMessage.classList);
+    
+    if (userAnswer === correctAnswer) {
+      console.log('${quizId}:正解');
+      errorMessage.classList.add("hidden");
+    } else {
+      console.log('${quizId}:不正解');
+      errorMessage.classList.remove("hidden");
+    }
+    if (userAnswer){
+    }
+  });
+});
+
+const answerInputs = document.querySelectorAll(".answer-input");
+answerInputs.forEach((input) => {
+  input.addEventListener("input", function() {
+    const errorMessage = this.closest(".answer-area").querySelector(".error-message");
+    if (errorMessage) {
+      errorMessage.classList.add("hidden");
+    }
+  })
+});
