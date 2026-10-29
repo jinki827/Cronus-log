@@ -1,12 +1,12 @@
 // プレイヤーデータを取得する関数
 function getPlayerData() {
-  const data = localStorage.getItem("nazotoki_player");
-  return data ? JSON.parse(data) : null;
+  const name = localStorage.getItem("playerName");
+  return name ? name : null;
 }
 
 // プレイヤーデータを保存する関数
-function savePlayerData(data) {
-  localStorage.setItem("nazotoki_player", JSON.stringify(data));
+function savePlayerData(name) {
+  localStorage.setItem("playerName", name);
 }
 
 // ログインチェック（未ログインならログイン画面へ）
@@ -22,7 +22,7 @@ function checkAuth() {
 // リセット処理
 function resetGame() {
   if (confirm("最初からやり直しますか？")) {
-    localStorage.removeItem("nazotoki_player");
+    localStorage.removeItem("playerName");
     window.location.reload();
   }
 }

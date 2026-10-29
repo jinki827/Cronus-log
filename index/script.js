@@ -1,4 +1,4 @@
-let playerData;
+let playerName;
 
 // 画面を1つだけ表示する関数
 function showScreen(id) {
@@ -10,9 +10,9 @@ function showScreen(id) {
 
 // ページを開いた時の処理
 window.onload = function () {
-  playerData = getPlayerData();
+  playerName = getPlayerData();
   // データがあればTop画面、なければスタート画面を表示
-  if (playerData && playerData.name) {
+  if (playerName) {
     showScreen("top-screen");
   } else {
     showScreen("start-screen");
@@ -25,11 +25,10 @@ document.getElementById("startBtn").addEventListener("click", function () {
 });
 
 // ログインボタン → 説明画面
-function login() {
+document.getElementById("loginBtn").addEventListener("click", function() {
   const name = document.getElementById("username-input").value.trim();
   if (!name) return alert("名前を入力してください。");
+  savePlayerData(name);
 
-  playerData = { name: name };
-  savePlayerData(playerData);
   showScreen("explanate-screen");
-}
+});
