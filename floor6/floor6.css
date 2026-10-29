@@ -333,6 +333,10 @@ body {
 
     .footer-menu {
       color: #fff;
+
+      .footer6-btn {
+        fill: #f2e41b;
+      }
     }
   }
 }
