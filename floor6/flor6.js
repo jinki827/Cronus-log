@@ -1,6 +1,6 @@
 // 仮データ
 const quizzes = {
-  "f6-q1": {unlock: true, cleared: true},
+  "f6-q1": {unlock: true, cleared: false},
   "f6-q2": {unlock: true, cleared: true},
   "f6-q3": {unlock: true, cleared: false},
   "f6-boss": {unlock: true, cleared: false}
@@ -35,7 +35,13 @@ tabButton.forEach((btn, index) => {
 });
 
 
-// 正解時のモーダル表示
+// 正解時のモーダルを閉じるボタン
+const clearModal = document.getElementById("clear-modal");
+const modalCloseButton = document.getElementById("modal-close-button");
+
+modalCloseButton.addEventListener("click", () => {
+  clearModal.classList.add("hidden");
+})
 
 
 // 回答送信時
@@ -43,7 +49,6 @@ const answerButton = document.querySelectorAll(".answer-button");
 answerButton.forEach((ans_btn) => {
   ans_btn.addEventListener("click", function(){
 
-    // 
     const inputAnswer = this.closest(".answer-wrapper").querySelector(".answer-input");
     // console.log(inputAnswer);
     const userAnswer = inputAnswer.value.trim();
@@ -51,23 +56,26 @@ answerButton.forEach((ans_btn) => {
     const sectionEl = this.closest("section");
     const quizId = sectionEl.id
     // console.log(quizId);
-
     const correctAnswer = quizAnswer[quizId];
     // console.log(correctAnswer);
     const errorMessage = this.closest(".answer-area").querySelector(".error-message");
     
     if (userAnswer === correctAnswer) {
       errorMessage.classList.add("hidden");
-
+      // 「Clear！」の表示と正解モーダルの表示
+      clearModal.classList.remove("hidden");
       const clearEl = sectionEl.querySelector(".clear");
-      if (clearEl){
-        
+      if (clearEl) {
+        clearEl.classList.remove("hidden");
       }
+      if (quizzes[quizId]) {
+        quizzes[quizId].cleared = true;
+      }
+      
     } else {
       errorMessage.classList.remove("hidden");
     }
-    if (userAnswer){
-    }
+    
   });
 });
 
