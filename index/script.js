@@ -32,3 +32,8 @@ document.getElementById("loginBtn").addEventListener("click", function() {
 
   showScreen("explanate-screen");
 });
+
+// 説明画面 → Top画面
+document.getElementById("gameStart-btn").addEventListener("click", function() {
+  showScreen("top-screen");
+});
