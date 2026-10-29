@@ -1,5 +1,5 @@
 // 仮データ
-const quizzes = {
+const defaultQuizzes = {
   "f6-q1": {unlock: true, cleared: false},
   "f6-q2": {unlock: true, cleared: false},
   "f6-q3": {unlock: true, cleared: false},
@@ -10,6 +10,9 @@ const quizAnswer = {
   "f6-q2": "bbb",
   "f6-q3": "ccc",
 }
+// localStorage からplayDataを取得する。なければ、仮データ
+const savedData = localStorage.getItem("floor6-quizzes");
+const quizzes = savedData ? JSON.parse(savedData) : defaultQuizzes;
 
 // 画面の切り替え
 const tabButton = document.querySelectorAll(".tab-button");
