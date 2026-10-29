@@ -1,9 +1,9 @@
 // 仮データ
 const quizzes = {
   "f6-q1": {unlock: true, cleared: false},
-  "f6-q2": {unlock: true, cleared: true},
+  "f6-q2": {unlock: true, cleared: false},
   "f6-q3": {unlock: true, cleared: false},
-  "f6-boss": {unlock: true, cleared: false}
+  "f6-boss": {unlock: false, cleared: false}
 }
 const quizAnswer = {
   "f6-q1": "aaa",
