@@ -34,6 +34,10 @@ tabButton.forEach((btn, index) => {
   });
 });
 
+
+// 正解時のモーダル表示
+
+
 // 回答送信時
 const answerButton = document.querySelectorAll(".answer-button");
 answerButton.forEach((ans_btn) => {
@@ -54,6 +58,11 @@ answerButton.forEach((ans_btn) => {
     
     if (userAnswer === correctAnswer) {
       errorMessage.classList.add("hidden");
+
+      const clearEl = sectionEl.querySelector(".clear");
+      if (clearEl){
+        
+      }
     } else {
       errorMessage.classList.remove("hidden");
     }
