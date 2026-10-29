@@ -34,6 +34,11 @@ document.getElementById("loginBtn").addEventListener("click", function() {
 });
 
 // 説明画面 → Top画面
-document.getElementById("gameStart-btn").addEventListener("click", function() {
+document.getElementById("startGame-btn").addEventListener("click", function() {
   showScreen("top-screen");
+});
+
+// やり直しボタン
+document.getElementById("reset-btn").addEventListener("click", function() {
+  resetGame();
 });
