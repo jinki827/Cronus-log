@@ -210,6 +210,12 @@ body {
               h2 {
                 color: #F2E41B;
                 font-size: 20px;
+
+                .clear {
+                  margin-left: 20px;
+                  color: #49dd5a; 
+                  letter-spacing: 0.1em;
+                }
               }
 
               .quiz-content {
@@ -233,27 +239,86 @@ body {
               margin-top: auto;
               margin-bottom: 10px;
               display: flex;
-              gap: 15px;
-              .answer-input {
-                flex: 1;
-                background-color: #fff;
-                color: #000;
-                padding: 12px 16px;
-                outline: none;
-                &::placeholder{
-                  color: #aaa;
+              flex-direction: column;
+              gap: 5px;
+              
+              .error-message {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: #f2e41b;
+                font-size: 14px;
+                font-weight: 200;
+                min-height: 24px;
+
+                &.hidden {
+                  display: flex !important;
+                  visibility: hidden;
                 }
               }
-              .answer-button {
-                width: 100px;
-                background-color: #f2e41b;
-                text-align: center;
-                transition: opacity 0.2s;
+
+              .answer-wrapper {
+                display: flex;
+                gap:15px;
+                .answer-input {
+                  flex: 1;
+                  background-color: #fff;
+                  color: #000;
+                  padding: 12px 16px;
+                  outline: none;
+                  &::placeholder{
+                    color: #aaa;
+                  }
+                }
+                .answer-button {
+                  width: 100px;
+                  background-color: #f2e41b;
+                  text-align: center;
+                  transition: opacity 0.2s;
+                }
               }
             }
           }
           
             
+        }
+      }
+
+    }
+  }
+
+  .clear-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(8, 12, 13, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+    .modal-card {
+      background-color: #fff;
+      padding: 30px 24px;
+      width: 60%;
+      max-width: 360px;
+      text-align: center;
+
+      h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+      button {
+        background-color: #e8e8e8;
+        padding: 8px 32px;
+        border-radius: 10px;
+        transition: opacity 0.2s;
+
+        &:hover {
+          opacity: 0.8;
         }
       }
 
