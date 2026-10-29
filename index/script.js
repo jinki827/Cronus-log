@@ -30,7 +30,7 @@ document.getElementById("loginBtn").addEventListener("click", function() {
   if (!name) return alert("名前を入力してください。");
   savePlayerData(name);
 
-  showScreen("explanate-screen");
+  showScreen("explanation-screen");
 });
 
 // 説明画面 → Top画面
