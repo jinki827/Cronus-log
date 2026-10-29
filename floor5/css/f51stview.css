@@ -1,0 +1,265 @@
+
+/* =========================
+   基本設定
+========================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: #ffffff;
+    color: #000000;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+}
+
+/* =========================
+   ページ全体
+========================= */
+.recovery-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: #ffffff;
+}
+
+/* =========================
+   ステータスバー
+========================= */
+.status-bar {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+/* =========================
+   メインコンテンツ
+========================= */
+.recovery-content {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding: clamp(150px, 25.4vh, 230px) 32px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+   Zロゴ
+========================= */
+.logo {
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 38px;
+    border-radius: 17px;
+    background-color: #7889f0;
+    box-shadow: 3px 4px 0 #e2e2e2;
+}
+
+.logo::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1px solid #ffffff;
+    border-radius: 13px;
+}
+
+.logo span {
+    color: #ffffff;
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 1;
+    position: relative;
+}
+
+/* =========================
+   説明文
+========================= */
+.message {
+    width: 100%;
+    margin-bottom: 68px;
+}
+
+.message h1 {
+    font-size: clamp(18px, 4.5vw, 21px);
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    white-space: nowrap;
+}
+
+.message p {
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   ボタン
+========================= */
+.actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.recovery-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 60px;
+    padding: 16px;
+    border: none;
+    border-radius: 999px;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.2s ease;
+}
+
+.recovery-button:active {
+    opacity: 0.7;
+}
+
+.recovery-button:focus-visible {
+    outline: 3px solid #7889f0;
+    outline-offset: 4px;
+}
+
+/* =========================
+   小さいスマートフォン
+========================= */
+@media (max-width: 360px) {
+    .recovery-content {
+        padding-right: 22px;
+        padding-left: 22px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .message h1 {
+        font-size: 17px;
+        white-space: normal;
+    }
+
+    .message p {
+        font-size: 14px;
+    }
+
+    .message {
+        margin-bottom: 48px;
+    }
+
+    .recovery-button {
+        min-height: 54px;
+        font-size: 15px;
+    }
+}
+
+/* =========================
+   タブレット
+========================= */
+@media (min-width: 600px) {
+    .recovery-content {
+        max-width: 480px;
+        padding-top: clamp(170px, 25vh, 250px);
+    }
+
+    .message h1 {
+        font-size: 21px;
+    }
+
+    .message p {
+        font-size: 16px;
+    }
+}
+
+/* =========================
+   PC・横向き画面
+========================= */
+@media (min-width: 900px) {
+    .recovery-content {
+        justify-content: flex-start;
+        padding-top: clamp(150px, 22vh, 230px);
+    }
+
+    .logo {
+        margin-bottom: 38px;
+    }
+
+    .message {
+        margin-bottom: 68px;
+    }
+
+    .recovery-button:hover {
+        opacity: 0.8;
+    }
+}
+
+/* =========================
+   画面の高さが小さい場合
+========================= */
+@media (max-height: 650px) {
+    .recovery-content {
+        padding-top: 90px;
+        padding-bottom: 24px;
+    }
+
+    .logo {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 24px;
+    }
+
+    .message {
+        margin-bottom: 28px;
+    }
+
+    .actions {
+        gap: 10px;
+    }
+
+    .recovery-button {
+        min-height: 50px;
+    }
+}

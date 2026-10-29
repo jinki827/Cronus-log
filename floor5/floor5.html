@@ -1,14 +1,117 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>floor5:現世偏</title>
-    <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
-    <script src="/floor5/floor5.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050e1e">
+  <title>Chronos Log | 鈴木 栞</title>
+  <link rel="stylesheet" href="css/f5.css">
 </head>
+
 <body>
-    <h1>第五層：現世</h1>
-    <p><a href="/index.html">戻る</a></p>
+  <main class="page">
+
+    <!-- プロフィール -->
+    <section class="profile">
+      <div class="profile-header">
+        <img src="./02_header 1.png" alt="プロフィールヘッダー">
+      </div>
+
+      <div class="profile-content">
+        <div class="profile-top">
+          <img class="avatar" src="./01_shiori_avatar 1.png" alt="鈴木栞のアイコン">
+          <button class="frozen-button" type="button">凍結中</button>
+        </div>
+
+        <div class="profile-info">
+          <h1>鈴木　栞</h1>
+          <p class="user-id">@shiori_ura</p>
+          <p class="bio">旅に出る。</p>
+          <p class="join-date">📅 2015年3月から利用しています</p>
+          <p class="follow-count">
+            <strong>0</strong> フォロー　
+            <strong>0</strong> フォロワー
+          </p>
+        </div>
+
+        <div class="frozen-notice">
+          <div class="notice-icon">
+            <img src="./images/key.png" alt="">
+          </div>
+          <div class="notice-text">
+            <h2>アカウントは凍結されています。</h2>
+            <p>
+              このアカウントは利用規約に反する可能性があるため、
+              凍結させています。凍結を解除したい場合は、以下の秘密の質問を解き、
+              パスワードを入力してください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 謎解き -->
+    <section class="puzzle-panel">
+      <div class="panel-heading">
+        <h2>Chronos Log</h2>
+        <span class="mascot">⏳</span>
+      </div>
+
+      <div class="question-progress">
+        <span>秘密の質問</span>
+        <span id="question-number">1/3</span>
+      </div>
+
+      <div class="question-content">
+        <p id="question-title">Q1.</p>
+        <p id="question-text"></p>
+      </div>
+
+      <form id="answer-form" class="answer-form">
+        <input
+          id="answer-input"
+          type="text"
+          placeholder="回答を入力してください"
+          aria-label="謎解きの回答"
+          autocomplete="off"
+        >
+        <button type="submit">回答する →</button>
+      </form>
+
+      <p id="answer-message" class="answer-message" aria-live="polite"></p>
+
+      <nav class="question-tabs" aria-label="問題の切り替え">
+        <button type="button" class="tab active" data-question="0">Q1</button>
+        <button type="button" class="tab" data-question="1">Q2</button>
+        <button type="button" class="tab" data-question="2">Q3</button>
+      </nav>
+    </section>
+
+    <!-- パスワード -->
+    <section class="password-panel">
+      <h2>パスワードを入力してください。</h2>
+      <p>3つの問題の答えを下の問題にいれて文章を完成させよう</p>
+
+      <div class="sentence-box" aria-label="完成させる文章">
+        <span id="sentence-preview"></span>
+      </div>
+
+      <form id="login-form" class="login-form">
+        <input
+          id="password-input"
+          type="text"
+          placeholder="🔑 パスワードを入力してください。"
+          aria-label="パスワード"
+          autocomplete="off"
+        >
+        <button type="submit">ログイン</button>
+      </form>
+
+      <p id="login-message" class="login-message" aria-live="polite"></p>
+    </section>
+
+  </main>
+
 </body>
 </html>
