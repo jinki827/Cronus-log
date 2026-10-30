@@ -26,6 +26,15 @@ function getFloorProgress(floorName){
 }
 
 
+// 特定のフロアの進行状況を更新して保存する関数
+function saveFloorProgress(floorName, floorData) {
+  const saved = localStorage.getItem("playerProgress");
+  const progress = saved ? JSON.parse(saved) : null;
+
+  progress[floorName] = floorData;
+  localStorage.setItem("playerProgress", JSON.stringify(progress));
+}
+
 // ログインチェック（未ログインならログイン画面へ）
 function checkAuth() {
   const data = getPlayerData();
