@@ -1,12 +1,38 @@
 // プレイヤーデータを取得する関数
 function getPlayerData() {
-  const data = localStorage.getItem("nazotoki_player");
-  return data ? JSON.parse(data) : null;
+  const name = localStorage.getItem("playerName");
+  return name ? name : null;
 }
 
 // プレイヤーデータを保存する関数
-function savePlayerData(data) {
-  localStorage.setItem("nazotoki_player", JSON.stringify(data));
+function savePlayerData(name) {
+  localStorage.setItem("playerName", name);
+}
+
+// 特定のフロアの進行状況を取得する関数（"playerProgress"がロールストレージになければ初期値を取得する）
+function getFloorProgress(floorName){
+  // すでに保存されたセーブデータを取得
+  const saved = localStorage.getItem("playerProgress");
+  let progress = saved ? JSON.parse(saved) : null;
+
+  // playerProgress がなければ、quizData.jsから初期値を取得。ローカルストレージに保存。
+  if (!progress){
+    progress = JSON.parse(JSON.stringify(INITIAL_QUIZ_PROGRESS));
+    localStorage.setItem("playerProgress",JSON.stringify(progress))
+  }
+
+  // 特定のフロアの進行状況のみ返す。
+  return progress[floorName];
+}
+
+
+// 特定のフロアの進行状況を更新して保存する関数
+function saveFloorProgress(floorName, floorData) {
+  const saved = localStorage.getItem("playerProgress");
+  const progress = saved ? JSON.parse(saved) : null;
+
+  progress[floorName] = floorData;
+  localStorage.setItem("playerProgress", JSON.stringify(progress));
 }
 
 // ログインチェック（未ログインならログイン画面へ）
@@ -22,11 +48,16 @@ function checkAuth() {
 // リセット処理
 function resetGame() {
   if (confirm("最初からやり直しますか？")) {
-    localStorage.removeItem("nazotoki_player");
+    localStorage.removeItem("playerName");
+    localStorage.removeItem("playerProgress");
     window.location.reload();
   }
 }
 
+
+// -------------------------
+// QRcodeReader
+// -------------------------
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
