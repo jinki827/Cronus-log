@@ -70,6 +70,16 @@ function isValidQuiz(playerAnswer, quizId) {
   }
 }
 
+// QRコードの内容があっているか判定する関数
+function isValidQuiz(readQR, quizId) {
+  readQRT1 = readQR;
+  QRpass = QUIZ_PASS[quizId];
+  if (readQRT1 === QRpass){
+    return true;
+  }else{
+    return false;
+  }
+}
 
 // -------------------------
 // QRcodeReader
