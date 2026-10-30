@@ -91,7 +91,7 @@ answerButton.forEach((ans_btn) => {
     const inputAnswer = sectionEl.querySelector(".answer-input");
     const playerAnswer = inputAnswer.value.trim();
     // quizData.jsから答えを取得
-    const correctAnswer = QUIZ_ANSWERS[FLOOR][quizId];
+    const correctAnswer = QUIZ_ANSWERS[quizId];
     
     // 正解時の処理
     if (playerAnswer === correctAnswer) {
