@@ -56,6 +56,22 @@ function resetGame() {
 
 
 // -------------------------
+// 判定関係の関数
+// -------------------------
+
+// クイズの答えがあっているか判定する関数
+function isValidQuiz(playerAnswer, quizId) {
+  playerAnswerT1 = playerAnswer;
+  correctAnswer = QUIZ_ANSWERS[quizId];
+  if (playerAnswerT1 === correctAnswer){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+
+// -------------------------
 // QRcodeReader
 // -------------------------
 function onScanSuccess(decodedText, decodedResult) {

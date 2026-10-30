@@ -91,10 +91,10 @@ answerButton.forEach((ans_btn) => {
     const inputAnswer = sectionEl.querySelector(".answer-input");
     const playerAnswer = inputAnswer.value.trim();
     // quizData.jsから答えを取得
-    const correctAnswer = QUIZ_ANSWERS[quizId];
+    const judge = isValidQuiz(playerAnswer, quizId);
     
     // 正解時の処理
-    if (playerAnswer === correctAnswer) {
+    if (judge) {
       
       // 1.進行状況を更新する。
       if (quizzes[quizId]) {
