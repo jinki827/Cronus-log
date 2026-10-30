@@ -1,73 +1,100 @@
-// 仮データ
-const defaultQuizzes = {
-  "f6-q1": {unlock: true, cleared: false},
-  "f6-q2": {unlock: true, cleared: false},
-  "f6-q3": {unlock: true, cleared: false},
-  "f6-boss": {unlock: false, cleared: false}
-}
-const quizAnswer = {
-  "f6-q1": "aaa",
-  "f6-q2": "bbb",
-  "f6-q3": "ccc",
-}
-// localStorage からplayDataを取得する。なければ、仮データ
-const savedData = getFloorProgress("f6");
-const quizzes = savedData ? savedData : defaultQuizzes;
-console.log(quizzes)
+// =================================================
+// 定数・初期データ取得
+// =================================================
 
+// localStorage からプレーヤーのこの階の進行状況を取得する。
+const FLOOR = "f6";
+const quizzes = getFloorProgress(FLOOR);
+
+
+// [デバッグ用]アンロック
 quizzes["f6-q1"].unlock = true;
+quizzes["f6-q2"].unlock = true;
+// quizzes["f6-q3"].unlock = true;
+// quizzes["f6-boss"].unlock = true;
 
-// 画面の切り替え
-const tabButton = document.querySelectorAll(".tab-button");
-const viewPanel = document.querySelectorAll(".view-panel");
-tabButton.forEach((btn, index) => {
+// 主要なdocument要素取得
+const tabButtons = document.querySelectorAll(".tab-button");
+const viewPanels = document.querySelectorAll(".view-panel");
+const lockPanel = document.getElementById("view-lock-f6");
+const clearModal = document.getElementById("clear-modal");
+const modalCloseButton = document.getElementById("modal-close-button");
+
+
+// =================================================
+// 画面ロード時の反映
+// =================================================
+function loadViewPanel(){
+  // すでにクリア済みの問題について、<h2>要素の横に「Clear！」を表示
+  viewPanels.forEach((section) => {
+    const quizState = quizzes[section.id];
+    if (quizState && quizState.cleared) {
+      const clearEl = section.querySelector(".clear");
+      if (clearEl) clearEl.classList.remove("hidden");
+    }
+  });
+}
+
+
+// =================================================
+// タブ切り替えの画面制御
+// =================================================
+tabButtons.forEach((btn, index) => {
   btn.addEventListener("click", function(){
-    // タブボタンの制御
-    tabButton.forEach((_btn) => _btn.classList.remove("is-active"));
+    // タブボタンのアクティブ化の切替
+    tabButtons.forEach((_btn) => _btn.classList.remove("is-active"));
     this.classList.add("is-active");
 
-    // viewPanelの表示制御
-    viewPanel.forEach((panel) => panel.classList.add("hidden"))
-    let targetViewPanelID = viewPanel[index].id;
-    if (quizzes[targetViewPanelID] && quizzes[targetViewPanelID].unlock === false) {
-      index = 5;
+    // viewPanelを一旦全部非表示
+    viewPanels.forEach((panel) => panel.classList.add("hidden"));
+
+    // クリックしたボタンと同じインデックスのview-panelクラスが対象の画面。
+    let targetViewPanel = viewPanels[index];
+
+    // しかし、unlockされてない画面だった場合、lock画面用のview-panelクラスを設定する
+    if (quizzes[targetViewPanel.id] && quizzes[targetViewPanel.id].unlock === false) {
+      targetViewPanel = lockPanel;
+
+      // view-lock-f6 のh2要素内文字を選択したボタンと同じ文字にする。 
+      const lockTitle = lockPanel.querySelector(".quiz-text h2");
+      lockTitle.textContent = btn.textContent;
     }
 
-    // view-lock-f6 のh2要素内文字を選択したボタンと同じ文字にする。 
-    const lockTitle = document.querySelector("#view-lock-f6 .quiz-text h2");
-    lockTitle.textContent = btn.textContent;
-    viewPanel[index].classList.remove("hidden")
+    // 対象のview-panelクラスを表示する
+    targetViewPanel.classList.remove("hidden")
   });
 });
 
 
-// 正解時のモーダルを閉じるボタン
-const clearModal = document.getElementById("clear-modal");
-const modalCloseButton = document.getElementById("modal-close-button");
 
+// =================================================
+// 正解時のモーダルを閉じるボタン
+// =================================================
 modalCloseButton.addEventListener("click", () => {
   clearModal.classList.add("hidden");
 });
 
 
+// =================================================
 // 回答送信時
+// =================================================
 const answerButton = document.querySelectorAll(".answer-button");
 answerButton.forEach((ans_btn) => {
   ans_btn.addEventListener("click", function(){
 
-    const inputAnswer = this.closest(".answer-wrapper").querySelector(".answer-input");
-    // console.log(inputAnswer);
-    const userAnswer = inputAnswer.value.trim();
-    // console.log(userAnswer);
+    // 対象の問題のセクション全体を取得
     const sectionEl = this.closest("section");
-    const quizId = sectionEl.id
-    // console.log(quizId);
-    const correctAnswer = quizAnswer[quizId];
-    // console.log(correctAnswer);
-    const errorMessage = this.closest(".answer-area").querySelector(".error-message");
+    const quizId = sectionEl.id;
+    const errorMessage = sectionEl.querySelector(".error-message");
+
+    // 入力されたテキストを取得
+    const inputAnswer = sectionEl.querySelector(".answer-input");
+    const playerAnswer = inputAnswer.value.trim();
+    // quizData.jsから答えを取得
+    const correctAnswer = QUIZ_ANSWERS[FLOOR][quizId];
     
     // 正解時の処理
-    if (userAnswer === correctAnswer) {
+    if (playerAnswer === correctAnswer) {
       
       // 1.進行状況を更新する。
       if (quizzes[quizId]) {
@@ -92,6 +119,7 @@ answerButton.forEach((ans_btn) => {
   });
 });
 
+
 // 答えを再入力したときに、不正解のメッセージログを消す。
 const answerInputs = document.querySelectorAll(".answer-input");
 answerInputs.forEach((input) => {
@@ -104,12 +132,5 @@ answerInputs.forEach((input) => {
 });
 
 
-// 回答があってたら、クリア済みにする。
-const sections = document.querySelectorAll("section");
-sections.forEach((section) => {
-  const quizResult = quizzes[section.id];
-  if (quizResult && quizResult.cleared) {
-    const clearEl = section.querySelector(".clear");
-    clearEl.classList.remove("hidden")
-  }
-});
+// load実行
+loadViewPanel()
