@@ -11,8 +11,9 @@ const quizAnswer = {
   "f6-q3": "ccc",
 }
 // localStorage からplayDataを取得する。なければ、仮データ
-const savedData = localStorage.getItem("floor6-quizzes");
-const quizzes = savedData ? JSON.parse(savedData) : defaultQuizzes;
+const savedData = getFloorProgress("f6");
+const quizzes = savedData ? savedData : defaultQuizzes;
+console.log(quizzes)
 
 // 画面の切り替え
 const tabButton = document.querySelectorAll(".tab-button");
@@ -44,7 +45,7 @@ const modalCloseButton = document.getElementById("modal-close-button");
 
 modalCloseButton.addEventListener("click", () => {
   clearModal.classList.add("hidden");
-})
+});
 
 
 // 回答送信時
