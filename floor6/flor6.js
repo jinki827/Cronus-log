@@ -15,6 +15,8 @@ const savedData = getFloorProgress("f6");
 const quizzes = savedData ? savedData : defaultQuizzes;
 console.log(quizzes)
 
+quizzes["f6-q1"].unlock = true;
+
 // 画面の切り替え
 const tabButton = document.querySelectorAll(".tab-button");
 const viewPanel = document.querySelectorAll(".view-panel");
@@ -26,12 +28,12 @@ tabButton.forEach((btn, index) => {
 
     // viewPanelの表示制御
     viewPanel.forEach((panel) => panel.classList.add("hidden"))
-    
     let targetViewPanelID = viewPanel[index].id;
     if (quizzes[targetViewPanelID] && quizzes[targetViewPanelID].unlock === false) {
       index = 5;
     }
 
+    // view-lock-f6 のh2要素内文字を選択したボタンと同じ文字にする。 
     const lockTitle = document.querySelector("#view-lock-f6 .quiz-text h2");
     lockTitle.textContent = btn.textContent;
     viewPanel[index].classList.remove("hidden")
@@ -64,19 +66,26 @@ answerButton.forEach((ans_btn) => {
     // console.log(correctAnswer);
     const errorMessage = this.closest(".answer-area").querySelector(".error-message");
     
+    // 正解時の処理
     if (userAnswer === correctAnswer) {
-      errorMessage.classList.add("hidden");
-      // 「Clear！」の表示と正解モーダルの表示
+      
+      // 1.進行状況を更新する。
+      if (quizzes[quizId]) {
+        quizzes[quizId].cleared = true;
+        updateFloorProgress("f6",quizzes)
+      }
+      // 2. 正解モーダルの表示
       clearModal.classList.remove("hidden");
+      // 3. h2 の横に「Clear！」の表示を表示する。
       const clearEl = sectionEl.querySelector(".clear");
       if (clearEl) {
         clearEl.classList.remove("hidden");
       }
-      if (quizzes[quizId]) {
-        quizzes[quizId].cleared = true;
-      }
-      
+      // 4. 一応、不正解の文字が出ないようにケア
+      errorMessage.classList.add("hidden");
+
     } else {
+      // 不正解時の処理
       errorMessage.classList.remove("hidden");
     }
     

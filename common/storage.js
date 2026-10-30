@@ -27,7 +27,7 @@ function getFloorProgress(floorName){
 
 
 // 特定のフロアの進行状況を更新して保存する関数
-function saveFloorProgress(floorName, floorData) {
+function updateFloorProgress(floorName, floorData) {
   const saved = localStorage.getItem("playerProgress");
   const progress = saved ? JSON.parse(saved) : null;
 
