@@ -7,12 +7,6 @@ const FLOOR = "f6";
 const quizzes = getFloorProgress(FLOOR);
 
 
-// [デバッグ用]アンロック
-quizzes["f6-q1"].unlock = true;
-quizzes["f6-q2"].unlock = true;
-// quizzes["f6-q3"].unlock = true;
-// quizzes["f6-boss"].unlock = true;
-
 // 主要なdocument要素取得
 const tabButtons = document.querySelectorAll(".tab-button");
 const viewPanels = document.querySelectorAll(".view-panel");
@@ -61,7 +55,7 @@ tabButtons.forEach((btn, index) => {
     }
 
     // 対象のview-panelクラスを表示する
-    targetViewPanel.classList.remove("hidden")
+    targetViewPanel.classList.remove("hidden");
   });
 });
 
@@ -91,15 +85,15 @@ answerButton.forEach((ans_btn) => {
     const inputAnswer = sectionEl.querySelector(".answer-input");
     const playerAnswer = inputAnswer.value.trim();
     // quizData.jsから答えを取得
-    const correctAnswer = QUIZ_ANSWERS[FLOOR][quizId];
+    const judge = isValidQuiz(playerAnswer, quizId);
     
     // 正解時の処理
-    if (playerAnswer === correctAnswer) {
+    if (judge) {
       
       // 1.進行状況を更新する。
       if (quizzes[quizId]) {
         quizzes[quizId].cleared = true;
-        updateFloorProgress("f6",quizzes)
+        updateFloorProgress(FLOOR,quizzes);
       }
       // 2. 正解モーダルの表示
       clearModal.classList.remove("hidden");
@@ -133,4 +127,4 @@ answerInputs.forEach((input) => {
 
 
 // load実行
-loadViewPanel()
+loadViewPanel();

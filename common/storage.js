@@ -56,6 +56,60 @@ function resetGame() {
 
 
 // -------------------------
+// 判定関係の関数
+// -------------------------
+
+// [クイズ判定]クイズの答えがあっているか判定する関数
+function isValidQuiz(playerAnswer, quizId) {
+  playerAnswerT1 = playerAnswer;
+  correctAnswer = QUIZ_ANSWERS[quizId];
+  if (playerAnswerT1 === correctAnswer){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+// qrCodeの入力値がQUIZ_PASSとあってるか判定をする。
+function checkUnlockQuiz(code){
+  // ★ code をハッシュ化するのを入れる。(後で) 20261031 jinki
+
+  // code がQUIZ_PASS のキーにあるか判定する。
+  const matchedQuizInfo = QUIZ_PASS[code];
+
+  // code が違っていたら、エラーを返す。
+  if (!matchedQuizInfo) {
+    return {success: false, message: '無効なコードです'};
+  }
+
+  // どこのフロアか抽出して、変更するフロアの現在の値をローカルストレージから取得。
+  const {quizId, floor, title} = matchedQuizInfo;
+  const quizzes = getFloorProgress(floor);
+  
+  // すでにアンロック済みだったら、解放済みのコードであることをメッセージで返す。
+  if (quizzes[quizId].unlock) {
+    return {success: true, message:`「 ${title} 」はすでに解放済みです`};
+  }
+
+  // アンロックして、ローカルストレージに保存。
+  quizzes[quizId].unlock = true;
+  updateFloorProgress(floor, quizzes);
+  
+  return {success: true, message:`「 ${title} 」が解放されました！`};
+}
+
+// アンロックテスト用
+// const testPass = "6ccc"
+// const test_result = checkUnlockQuiz(testPass);
+
+// if (test_result.success) {
+//   alert(test_result.message);
+// }else {
+//   alert(test_result.message);
+// }
+
+
+// -------------------------
 // QRcodeReader
 // -------------------------
 function onScanSuccess(decodedText, decodedResult) {
@@ -125,3 +179,6 @@ function closeScanner() {
     container.style.display = "none";
   }
 }
+
+
+
