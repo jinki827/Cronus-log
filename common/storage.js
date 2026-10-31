@@ -59,7 +59,7 @@ function resetGame() {
 // 判定関係の関数
 // -------------------------
 
-// クイズの答えがあっているか判定する関数
+// [クイズ判定]クイズの答えがあっているか判定する関数
 function isValidQuiz(playerAnswer, quizId) {
   playerAnswerT1 = playerAnswer;
   correctAnswer = QUIZ_ANSWERS[quizId];
@@ -70,16 +70,6 @@ function isValidQuiz(playerAnswer, quizId) {
   }
 }
 
-// QRコードの内容があっているか判定する関数
-function isValidQuiz(readQR, quizId) {
-  readQRT1 = readQR;
-  QRpass = QUIZ_PASS[quizId];
-  if (readQRT1 === QRpass){
-    return true;
-  }else{
-    return false;
-  }
-}
 
 // -------------------------
 // QRcodeReader
@@ -151,3 +141,16 @@ function closeScanner() {
     container.style.display = "none";
   }
 }
+
+
+// qrCodeの判定をする。
+const testPass = "6bbb"   // テスト用
+let input_log = testPass;
+const matchedQuizId = QUIZ_PASS[input_log];
+if (matchedQuizId) {
+  const floor = matchedQuizId.substring(0, matchedQuizId.indexOf("-"));
+  const quizzes = getFloorProgress(floor);
+
+  quizzes[matchedQuizId].unlock = true;
+  updateFloorProgress(floor, quizzes);
+};
