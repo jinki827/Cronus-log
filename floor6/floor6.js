@@ -93,7 +93,7 @@ answerButton.forEach((ans_btn) => {
       // 1.進行状況を更新する。
       if (quizzes[quizId]) {
         quizzes[quizId].cleared = true;
-        updateFloorProgress("f6",quizzes);
+        updateFloorProgress(FLOOR,quizzes);
       }
       // 2. 正解モーダルの表示
       clearModal.classList.remove("hidden");
