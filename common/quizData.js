@@ -16,18 +16,18 @@ const QUIZ_ANSWERS = {
 
 // クイズの解放パスワード
 const QUIZ_PASS = {
-  "f6-q1": "aaa",
-  "f6-q2": "bbb",
-  "f6-q3": "ccc",
-  "f6-boss":"boss",
-  "f5-q1": "aaa",
-  "f5-q2": "bbb",
-  "f5-q3": "ccc",
-  "f5-boss":"boss",
-  "f4-q1": "aaa",
-  "f4-q2": "bbb",
-  "f4-q3": "ccc",
-  "f4-boss":"boss"
+  "6aaa":"f6-q1",
+  "6bbb": "f6-q2",
+  "6ccc": "f6-q3",
+  "6boss": "f6-boss",
+  "5aaa": "f5-q1",
+  "5bbb": "f5-q2",
+  "5ccc": "f5-q3",
+  "5boss":"f5-boss",
+  "4aaa": "f4-q1",
+  "4bbb": "f4-q2",
+  "4ccc": "f4-q3",
+  "4boss":"f4-boss"
 }
 
 
