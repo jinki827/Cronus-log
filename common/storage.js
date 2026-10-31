@@ -70,6 +70,44 @@ function isValidQuiz(playerAnswer, quizId) {
   }
 }
 
+// qrCodeの入力値がQUIZ_PASSとあってるか判定をする。
+function checkUnlockQuiz(code){
+  // ★ code をハッシュ化するのを入れる。(後で) 20261031 jinki
+
+  // code がQUIZ_PASS のキーにあるか判定する。
+  const matchedQuizId = QUIZ_PASS[code];
+
+  // code が違っていたら、エラーを返す。
+  if (!matchedQuizId) {
+    return {success: false, message: "無効なコードです"};
+  }
+
+  // どこのフロアか抽出して、変更するフロアの現在の値をローカルストレージから取得。
+  const floor = matchedQuizId.substring(0, matchedQuizId.indexOf("-"));
+  const quizzes = getFloorProgress(floor);
+  
+  // すでにアンロック済みだったら、解放済みのコードであることをメッセージで返す。
+  if (quizzes[matchedQuizId].unlock) {
+    return {success: true, message:"このコードはすでに解放済みです"};
+  }
+
+  // アンロックして、ローカルストレージに保存。
+  quizzes[matchedQuizId].unlock = true;
+  updateFloorProgress(floor, quizzes);
+  
+  return {success: true, message:"問題が解放されました"};
+}
+
+// アンロックテスト用
+// const testPass = "6bbb"
+// const test_result = checkUnlockQuiz(testPass);
+
+// if (test_result.success) {
+//   alert(test_result.message);
+// }else {
+//   alert(test_result.message);
+// }
+
 
 // -------------------------
 // QRcodeReader
@@ -143,14 +181,4 @@ function closeScanner() {
 }
 
 
-// qrCodeの判定をする。
-const testPass = "6bbb"   // テスト用
-let input_log = testPass;
-const matchedQuizId = QUIZ_PASS[input_log];
-if (matchedQuizId) {
-  const floor = matchedQuizId.substring(0, matchedQuizId.indexOf("-"));
-  const quizzes = getFloorProgress(floor);
 
-  quizzes[matchedQuizId].unlock = true;
-  updateFloorProgress(floor, quizzes);
-};
