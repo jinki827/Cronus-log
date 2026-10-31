@@ -16,18 +16,66 @@ const QUIZ_ANSWERS = {
 
 // クイズの解放パスワード
 const QUIZ_PASS = {
-  "6aaa":"f6-q1",
-  "6bbb": "f6-q2",
-  "6ccc": "f6-q3",
-  "6boss": "f6-boss",
-  "5aaa": "f5-q1",
-  "5bbb": "f5-q2",
-  "5ccc": "f5-q3",
-  "5boss":"f5-boss",
-  "4aaa": "f4-q1",
-  "4bbb": "f4-q2",
-  "4ccc": "f4-q3",
-  "4boss":"f4-boss"
+  "6aaa": {
+    quizId: "f6-q1",
+    floor: "f6",
+    title: "6階の問題Q1"
+  },
+  "6bbb": {
+    quizId: "f6-q2",
+    floor: "f6",
+    title: "6階の問題Q2"
+  },
+  "6ccc": {
+    quizId:"f6-q3",
+    floor: "f6",
+    title: "6階の問題Q3"
+  },
+  "6boss": {
+    quizId: "f6-boss",
+    floor: "f6",
+    title: "6階のボス問"
+  },
+  "5aaa": {
+    quizId: "f5-q1",
+    floor: "f5",
+    title: "5階の問題Q1"
+  },
+  "5bbb": {
+    quizId: "f5-q2",
+    floor: "f5",
+    title: "5階の問題Q2"
+  },
+  "5ccc": {
+    quizId: "f5-q3",
+    floor: "f5",
+    title: "5階の問題Q3"
+  },
+  "5boss":{
+    quizId: "f5-boss",
+    floor: "f5",
+    title: "5階のボス問"
+  },
+  "4aaa": {
+    quizId: "f4-q1",
+    floor: "f4",
+    title: "4階の問題Q1"
+  },
+  "4bbb": {
+    quizId: "f4-q2",
+    floor: "f4",
+    title: "4階の問題Q2"
+  },
+  "4ccc": {
+    quizId: "f4-q3",
+    floor: "f4",
+    title: "4階の問題Q3"
+  },
+  "4boss": {
+    quizId: "f4-boss",
+    floor: "f4",
+    title: "4階のボス問"
+  }
 }
 
 

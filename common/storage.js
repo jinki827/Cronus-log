@@ -75,31 +75,31 @@ function checkUnlockQuiz(code){
   // ★ code をハッシュ化するのを入れる。(後で) 20261031 jinki
 
   // code がQUIZ_PASS のキーにあるか判定する。
-  const matchedQuizId = QUIZ_PASS[code];
+  const matchedQuizInfo = QUIZ_PASS[code];
 
   // code が違っていたら、エラーを返す。
-  if (!matchedQuizId) {
-    return {success: false, message: "無効なコードです"};
+  if (!matchedQuizInfo) {
+    return {success: false, message: '無効なコードです'};
   }
 
   // どこのフロアか抽出して、変更するフロアの現在の値をローカルストレージから取得。
-  const floor = matchedQuizId.substring(0, matchedQuizId.indexOf("-"));
+  const {quizId, floor, title} = matchedQuizInfo;
   const quizzes = getFloorProgress(floor);
   
   // すでにアンロック済みだったら、解放済みのコードであることをメッセージで返す。
-  if (quizzes[matchedQuizId].unlock) {
-    return {success: true, message:"このコードはすでに解放済みです"};
+  if (quizzes[quizId].unlock) {
+    return {success: true, message:`「 ${title} 」はすでに解放済みです`};
   }
 
   // アンロックして、ローカルストレージに保存。
-  quizzes[matchedQuizId].unlock = true;
+  quizzes[quizId].unlock = true;
   updateFloorProgress(floor, quizzes);
   
-  return {success: true, message:"問題が解放されました"};
+  return {success: true, message:`「 ${title} 」が解放されました！`};
 }
 
 // アンロックテスト用
-// const testPass = "6bbb"
+// const testPass = "6ccc"
 // const test_result = checkUnlockQuiz(testPass);
 
 // if (test_result.success) {
