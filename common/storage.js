@@ -153,7 +153,7 @@ document.getElementById("start-btn").addEventListener("click", () => {
         alert(result.message);
         
         // 一応リロード
-        if(result.message) {
+        if(result.success && !result.message.includes("すでに解放済み")) {
           window.location.reload();
         }
 
