@@ -145,8 +145,18 @@ document.getElementById("start-btn").addEventListener("click", () => {
       },
       (decodedText, decodedResult) => {
         // ① 読み取り成功時の処理
-        alert("読み取り成功: " + decodedText);
         closeScanner(); // 成功したら自動で閉じる
+        // alert("読み取り成功: " + decodedText);
+
+        // ★ 読み取った文字列をQUIZ_PASSの中にあるものかを判定する関数に入れる。
+        const result = checkUnlockQuiz(decodedText);
+        alert(result.message);
+        
+        // 一応リロード
+        if(result.success && !result.message.includes("すでに解放済み")) {
+          window.location.reload();
+        }
+
       },
       (errorMessage) => {
         // ② 読み取り中（エラーではなく、毎フレームスキャンを失敗している状態）
