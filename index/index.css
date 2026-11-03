@@ -184,12 +184,27 @@ main {
       width: 100%;
       margin-top: auto;
       background-color: #080C0D;
-      color: #fff;
+
+      .footer-menu {
+        color: #fff;
+
+        .footer-btn {
+          svg {
+            transition: transform 0.2s ease;
+          }
+          &.is-active,
+          &:hover {
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            padding: 2px;
+            svg {
+              transform: scale(1.15);
+            }
+          }
+        }
+
+      }
     }
   }
-}
-
-.qrBtn {
-    margin-top: 6px;
-    padding-top: 5px;
 }
