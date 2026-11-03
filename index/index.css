@@ -151,6 +151,15 @@ main {
             border-radius: 10px;
           }
 
+          .quiz-progress {
+            display: flex;
+            gap: 4px;
+
+            img {
+              width: 30px;
+            }
+          }
+
           &.floor6 {
             border-left: 8px solid #F2E41B;
             a {
