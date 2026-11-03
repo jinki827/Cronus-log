@@ -333,6 +333,20 @@ body {
 
     .footer-menu {
       color: #fff;
+
+      .footer-btn {
+        svg {
+          transition: transform 0.2s ease;
+        }
+        &.is-active,
+        &:hover {
+          color: #f2e41b;
+
+          svg {
+            transform: scale(1.15);
+          }
+        }
+      }
     }
   }
 }
