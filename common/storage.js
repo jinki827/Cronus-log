@@ -61,21 +61,18 @@ function resetGame() {
 
 // [クイズ判定]クイズの答えがあっているか判定する関数
 function isValidQuiz(playerAnswer, quizId) {
-  playerAnswerT1 = playerAnswer;
-  correctAnswer = QUIZ_ANSWERS[quizId];
-  if (playerAnswerT1 === correctAnswer){
-    return true;
-  }else{
-    return false;
-  }
+  const hashedPlayerAnswer = hash(playerAnswer);
+  const correctAnswer = QUIZ_ANSWERS[quizId];
+
+  return hashedPlayerAnswer === correctAnswer;
 }
 
-// qrCodeの入力値がQUIZ_PASSとあってるか判定をする。
+// [アンロック判定]qrCodeの入力値がQUIZ_PASSとあってるか判定をする。
 function checkUnlockQuiz(code){
-  // ★ code をハッシュ化するのを入れる。(後で) 20261031 jinki
+  const hashedCode = hash(code);
 
   // code がQUIZ_PASS のキーにあるか判定する。
-  const matchedQuizInfo = QUIZ_PASS[code];
+  const matchedQuizInfo = QUIZ_PASS[hashedCode];
 
   // code が違っていたら、エラーを返す。
   if (!matchedQuizInfo) {
@@ -98,16 +95,16 @@ function checkUnlockQuiz(code){
   return {success: true, message:`「 ${title} 」が解放されました！`};
 }
 
-// アンロックテスト用
-// const testPass = "6ccc"
-// const test_result = checkUnlockQuiz(testPass);
-
-// if (test_result.success) {
-//   alert(test_result.message);
-// }else {
-//   alert(test_result.message);
-// }
-
+// [ハッシュ化]の関数
+function hash(text) {
+  let hashNum = 0;
+  for (let i = 0; i < text.length; i++) {
+    hashNum = ((hashNum << 5) - hashNum) + text.charCodeAt(i);
+    hashNum |= 0;
+  }
+  // 英数字（36進数）の文字列に変換
+  return (hashNum >>> 0).toString(36);
+}
 
 // -------------------------
 // QRcodeReader

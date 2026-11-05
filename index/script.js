@@ -14,13 +14,10 @@ function updateQuizIcons() {
 
   floors.forEach(floor => {
     const progress = getFloorProgress(floor);
-    console.log(progress);
     if (!progress) return;
 
     for (const quizId in progress) {
-      console.log(quizId, progress[quizId]);
       const img = document.querySelector(`img[data-quiz="${quizId}"]`);
-      console.dir(img.dataset.quiz);
       if (!img || !progress[quizId]) return;
 
       if (progress[quizId].cleared) {
