@@ -99,7 +99,7 @@ function checkUnlockQuiz(code){
 function hash(text) {
   let hashNum = 0;
   for (let i = 0; i < text.length; i++) {
-    hashNum - ((hashNum << 5) - hashNum) + text.charCodeAt(i);
+    hashNum = ((hashNum << 5) - hashNum) + text.charCodeAt(i);
     hashNum |= 0;
   }
   // 英数字（36進数）の文字列に変換
