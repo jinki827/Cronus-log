@@ -176,12 +176,6 @@ document.getElementById("closeQrcodeButton").addEventListener("click", () => {
 
 // スキャナーを停止して閉じる共通処理
 function closeScanner() {
-  // footerボタンの押しっぱなしの状態を解除する。
-  const startBtn = document.getElementById("start-btn");
-  if (startBtn) {
-    startBtn.blur();
-  }
-
   if (html5QrCode && html5QrCode.isScanning) {
     html5QrCode
       .stop()
