@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>floor6:未来偏</title>
+  <title>floor6|未来偏</title>
   <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
   <link rel="stylesheet" href="./floor6.css">
   <link rel="stylesheet" href="../common/common.css">
 
-  <script src="../common/quizData.js"></script>
+  <script src="../common/quizData.js" defer></script>
   <script src="../common/storage.js" defer></script>
-  <script src="./floor6.js" defer></script>
+  <script src="../common/floor.js" defer></script>
+  <!-- <script src="./floor6.js" defer></script> -->
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript" defer></script>
 
 </head>
@@ -52,7 +53,7 @@
     <!-- メイン画面 -->
     <div class="view-container">
       <!-- ホーム画面 -->
-      <section id="view-home-f6" class="view-panel">
+      <section id="view-home" class="view-panel">
         <!-- 説明(introduction) -->
         <div class="introduction">
           <div class="introduction-card">
@@ -245,7 +246,7 @@
       </section>
 
       <!-- 未開放画面 -->
-      <section id="view-lock-f6" class="view-panel hidden">
+      <section id="view-lock" class="view-panel hidden">
         <!-- 説明(introduction) -->
         <div class="introduction">
           <div class="introduction-card">
