@@ -1,85 +1,130 @@
-// 読み取り結果の管理
-const STORAGE_KEY = "foundCodes";
-let foundCodes = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-let scannedData = "";   // 直近に読み取った内容
+// =================================================
+// 定数・初期データ取得
+// =================================================
 
-let html5QrCode = null;
-const container = document.getElementById('scanner-container');
-const resultEL = document.getElementById('result');
-const TARGET = "https://google.com/html5-qrcode";
+// localStorage からプレーヤーのこの階の進行状況を取得する。
+const FLOOR = "f4";
+const quizzes = getFloorProgress(FLOOR);
 
-function onScanSuccess(decodedText) {
-    scannedData = decodedText;
-    resultEl.textContent = decodedText;
+// 主要なdocument要素取得
+const tabButtons = document.querySelectorAll(".tab-button");
+const viewPanels = document.querySelectorAll(".view-panel");
+const lockPanel = document.getElementById("view-lock");
+const clearModal = document.getElementById("clear-modal");
+const modalCloseButton = document.getElementById("modal-close-button");
 
-    // 重複しなければ保存
-    if (!foundCodes.includes(decodedText)) {
-        foundCodes.push(decodedText);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(foundCodes));
+
+// =================================================
+// 画面ロード時の反映
+// =================================================
+function loadViewPanel(){
+  // すでにクリア済みの問題について、<h2>要素の横に「Clear！」を表示
+  viewPanels.forEach((section) => {
+    const quizState = quizzes[section.id];
+    if (quizState && quizState.cleared) {
+      const clearEl = section.querySelector(".clear");
+      if (clearEl) clearEl.classList.remove("hidden");
     }
-
-    if(decodedText === TARGET) {
-        
-    }
-
-    // 読み取り内容に応じた処理(例)
-    // if (decodedText === "rock1") { alert("第1問の岩を発見!"); }
-
-    closeScanner();
+  });
 }
 
 
-function onScanFailure(error) {
-  // handle scan failure, usually better to ignore and keep scanning.
-  // for example:
-  console.warn(`Code scan error = ${error}`);
-}
+// =================================================
+// タブ切り替えの画面制御
+// =================================================
+tabButtons.forEach((btn, index) => {
+  btn.addEventListener("click", function(){
+    // タブボタンのアクティブ化の切替
+    tabButtons.forEach((_btn) => _btn.classList.remove("is-active"));
+    this.classList.add("is-active");
 
-        // 【起動ボタンを押したとき】
-        document.getElementById('start-btn').addEventListener('click', () => {
-            container.style.display = 'flex'; // 画面を表示
-            
-            // インスタンスがなければ作成
-            if (!html5QrCode) {
-                html5QrCode = new Html5Qrcode("reader");
-            }
+    // viewPanelを一旦全部非表示
+    viewPanels.forEach((panel) => panel.classList.add("hidden"));
 
-            // カメラの起動
-            html5QrCode.start(
-                { facingMode: "environment" }, // 背面カメラを優先
-                {
-                    fps: 10,    // 1秒間に何回スキャンを試みるか
-                    qrbox: { width: 250, height: 250 } // スキャンする枠のサイズ
-                },
-                (decodedText, decodedResult) => {
-                    // ① 読み取り成功時の処理
-                    alert("読み取り成功: " + decodedText);
-                    closeScanner(); // 成功したら自動で閉じる
-                },
-                (errorMessage) => {
-                    // ② 読み取り中（エラーではなく、毎フレームスキャンを失敗している状態）
-                    // ログが大量に出るため通常は空でOK
-                }
-            ).catch((err) => {
-                alert("カメラの起動に失敗しました: " + err);
-                container.style.display = 'none';
-            });
-        });
+    // クリックしたボタンと同じインデックスのview-panelクラスが対象の画面。
+    let targetViewPanel = viewPanels[index];
 
-        // 【閉じるボタンを押したとき】
-        document.getElementById('closeQrcodeButton').addEventListener('click', () => {
-            closeScanner();
-        });
+    // しかし、unlockされてない画面だった場合、lock画面用のview-panelクラスを設定する
+    if (quizzes[targetViewPanel.id] && quizzes[targetViewPanel.id].unlock === false) {
+      targetViewPanel = lockPanel;
 
-        // スキャナーを停止して閉じる共通処理
-        function closeScanner() {
-            if (html5QrCode && html5QrCode.isScanning) {
-                html5QrCode.stop().then(() => {
-                    container.style.display = 'none'; // 画面を非表示
-                }).catch((err) => {
-                    console.error("停止エラー: ", err);
-                });
-            } else {
-                container.style.display = 'none';
-            }
-        }
+      // view-lock のh2要素内文字を選択したボタンと同じ文字にする。 
+      const lockTitle = lockPanel.querySelector(".quiz-text h2");
+      lockTitle.textContent = btn.textContent;
+    }
+
+    // 対象のview-panelクラスを表示する
+    targetViewPanel.classList.remove("hidden");
+  });
+});
+
+
+
+// =================================================
+// 正解時のモーダルを閉じるボタン
+// =================================================
+modalCloseButton.addEventListener("click", () => {
+  clearModal.classList.add("hidden");
+});
+
+
+// =================================================
+// 回答送信時
+// =================================================
+const answerButton = document.querySelectorAll(".answer-button");
+answerButton.forEach((ans_btn) => {
+  ans_btn.addEventListener("click", function(){
+
+    // 対象の問題のセクション全体を取得
+    const sectionEl = this.closest("section");
+    const quizId = sectionEl.id;
+    const errorMessage = sectionEl.querySelector(".error-message");
+
+    // 入力されたテキストを取得
+    const inputAnswer = sectionEl.querySelector(".answer-input");
+    const playerAnswer = inputAnswer.value.trim();
+    // quizData.jsから答えを取得
+    const judge = isValidQuiz(playerAnswer, quizId);
+    
+    // 正解時の処理
+    if (judge) {
+      
+      // 1.進行状況を更新する。
+      if (quizzes[quizId]) {
+        quizzes[quizId].cleared = true;
+        updateFloorProgress(FLOOR,quizzes);
+      }
+      // 2. 正解モーダルの表示
+      clearModal.classList.remove("hidden");
+      // 3. h2 の横に「Clear！」の表示を表示する。
+      const clearEl = sectionEl.querySelector(".clear");
+      if (clearEl) {
+        clearEl.classList.remove("hidden");
+      }
+      // 4. 一応、不正解の文字が出ないようにケア
+      errorMessage.classList.add("hidden");
+
+    } else {
+      // 不正解時の処理
+      errorMessage.classList.remove("hidden");
+    }
+    
+  });
+});
+
+
+// 答えを再入力したときに、不正解のメッセージログを消す。
+const answerInputs = document.querySelectorAll(".answer-input");
+answerInputs.forEach((input) => {
+  input.addEventListener("input", function() {
+    const errorMessage = this.closest(".answer-area").querySelector(".error-message");
+    if (errorMessage) {
+      errorMessage.classList.add("hidden");
+    }
+  })
+});
+
+
+
+// load実行
+loadViewPanel();
