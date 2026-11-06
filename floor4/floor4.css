@@ -343,7 +343,7 @@ body {
           transition: transform 0.2s ease;
         }
 
-        &.is-active,
+        &.f4,
         &:hover {
           color: #f2e41b;
 

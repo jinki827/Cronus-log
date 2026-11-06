@@ -31,6 +31,12 @@
   }
 }
 
+
+
+#f5 .footer-btn.f5{
+  color: #F2E41B;
+}
+
 #scanner-container {
   display: none;
   /* 初期状態は非表示 */
