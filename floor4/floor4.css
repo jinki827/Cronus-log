@@ -18,7 +18,7 @@ body {
       align-items: flex-end;
       width: 100%;
       padding: 30px 10px 10px;
-      color: #F2E41B;
+      color: #FCA7F1;
 
       .header-title {
         flex: 1 1 0;
@@ -100,8 +100,8 @@ body {
           padding: 5px 0;
 
           &.is-active {
-            color: #F2E41B;
-            border-bottom: 1px solid #F2E41B;
+            color: #FCA7F1;
+            border-bottom: 1px solid #FCA7F1;
           }
         }
       }
@@ -206,7 +206,7 @@ body {
               flex: 1;
 
               h2 {
-                color: #F2E41B;
+                color: #FCA7F1;
                 font-size: 20px;
 
                 .clear {
@@ -345,7 +345,7 @@ body {
 
         &.f4,
         &:hover {
-          color: #f2e41b;
+          color: #FCA7F1;
 
           svg {
             transform: scale(1.15);
