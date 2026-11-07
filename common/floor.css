@@ -1,24 +1,49 @@
 @charset "UTF-8";
 
+/* 4階のテーマカラー */
+body.floor-4{
+  --floor-color: #fca7f1;
+  --bg-color: #080c0d;
+  --header-bg-color: #5c304d;
+  --footer-bg-color: #6a3458;
+}
+
+/* 5階のテーマカラー */
+body.floor-5{
+  --floor-color: #4ea8de;
+  --bg-color: #080c0d;
+  --header-bg-color: #1e3a5f;
+  --footer-bg-color: #244673;
+}
+
+/* 6階のテーマカラー */
+body.floor-6{
+  --floor-color: #f2e41b;
+  --bg-color: #080c0d;
+  --header-bg-color: #6b6449;
+  --footer-bg-color: #7c7041;
+}
+
+
 body {
   height: 100dvh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  background-color: #080C0D;
+  background-color: var(--bg-color);
 
   header {
     flex-shrink: 0;
     width: 100%;
-    background: linear-gradient(to bottom, #6B6449 0%, #080C0D 60%);
     z-index: 1;
+    background: linear-gradient(to bottom, var(--header-bg-color) 0%, var(--bg-color) 60%);
 
     .header-inner {
       display: flex;
       align-items: flex-end;
       width: 100%;
       padding: 30px 10px 10px;
-      color: #F2E41B;
+      color: var(--floor-color);
 
       .header-title {
         flex: 1 1 0;
@@ -100,8 +125,8 @@ body {
           padding: 5px 0;
 
           &.is-active {
-            color: #F2E41B;
-            border-bottom: 1px solid #F2E41B;
+            color: var(--floor-color);
+            border-bottom: 1px solid var(--floor-color);
           }
         }
       }
@@ -126,7 +151,6 @@ body {
           width: 100%;
           padding: 0 24px;
           margin-bottom: 40px;
-
 
           .introduction-card {
             position: relative;
@@ -206,7 +230,7 @@ body {
               flex: 1;
 
               h2 {
-                color: #F2E41B;
+                color: var(--floor-color);
                 font-size: 20px;
 
                 .clear {
@@ -274,18 +298,15 @@ body {
 
                 .answer-button {
                   width: 100px;
-                  background-color: #f2e41b;
+                  background-color: var(--floor-color);
                   text-align: center;
                   transition: opacity 0.2s;
                 }
               }
             }
           }
-
-
         }
       }
-
     }
   }
 
@@ -325,14 +346,13 @@ body {
           opacity: 0.8;
         }
       }
-
     }
   }
 
   footer {
     flex-shrink: 0;
     width: 100%;
-    background: linear-gradient(to top, #7c7041 0%, #080C0D 60%);
+    background: linear-gradient(to top, var(--footer-bg-color) 0%, var(--bg-color) 60%);
     padding-bottom: env(safe-area-inset-bottom, 0px);
 
     .footer-menu {
@@ -343,10 +363,9 @@ body {
           transition: transform 0.2s ease;
         }
 
-        &.f6,
+        &.is-active,
         &:hover {
-          color: #f2e41b;
-
+          color: var(--floor-color);
           svg {
             transform: scale(1.15);
           }
