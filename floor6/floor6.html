@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>floor6:未来偏</title>
+  <title>floor6|未来偏</title>
   <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
-  <link rel="stylesheet" href="./floor6.css">
   <link rel="stylesheet" href="../common/common.css">
+  <link rel="stylesheet" href="../common/floor.css">
 
-  <script src="../common/quizData.js"></script>
+  <script src="../common/quizData.js" defer></script>
   <script src="../common/storage.js" defer></script>
-  <script src="./floor6.js" defer></script>
+  <script src="../common/floor.js" defer></script>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript" defer></script>
 
 </head>
 
-<body>
+<body id="f6" class="floor floor-6">
   <!-- header -->
   <header>
     <!-- header-title -->
@@ -52,7 +52,7 @@
     <!-- メイン画面 -->
     <div class="view-container">
       <!-- ホーム画面 -->
-      <section id="view-home-f6" class="view-panel">
+      <section id="view-home" class="view-panel">
         <!-- 説明(introduction) -->
         <div class="introduction">
           <div class="introduction-card">
@@ -245,7 +245,7 @@
       </section>
 
       <!-- 未開放画面 -->
-      <section id="view-lock-f6" class="view-panel hidden">
+      <section id="view-lock" class="view-panel hidden">
         <!-- 説明(introduction) -->
         <div class="introduction">
           <div class="introduction-card">
@@ -295,7 +295,7 @@
   <footer>
     <div class="footer">
       <ul class="footer-menu">
-        <li><a href="../index.html" class="footer-btn">
+        <li><a href="../index.html" class="footer-btn home">
           <svg height="40px" width="40px" viewBox="0 -960 960 960" fill="currentColor" role="img" aria-label="home-icon">
             <path d="M226.67-186.67h140v-246.66h226.66v246.66h140v-380L480-756.67l-253.33 190v380ZM160-120v-480l320-240 320 240v480H526.67v-246.67h-93.34V-120H160Zm320-352Z"/>
           </svg>

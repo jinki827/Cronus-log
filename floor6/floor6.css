@@ -1,23 +1,12 @@
 @charset "UTF-8";
 
 body {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  background-color: #080C0D;
+  
   
   header {
-    flex-shrink: 0;
-    width: 100%;
     background: linear-gradient(to bottom, #6B6449 0%, #080C0D 60%);
-    z-index: 1;
   
     .header-inner {
-      display: flex;
-      align-items: flex-end;
-      width: 100%;
-      padding: 30px 10px 10px;
       color: #F2E41B;
   
       .header-title {
@@ -338,7 +327,7 @@ body {
         svg {
           transition: transform 0.2s ease;
         }
-        &.is-active,
+        &.f6,
         &:hover {
           color: #f2e41b;
 
