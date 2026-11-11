@@ -245,6 +245,20 @@ body {
                 border: solid 1px #000;
                 padding: 30px;
                 font-size: 18px;
+
+                table {
+                  margin: 0 auto 8px;
+                  td {
+                    border: 1px solid #000;
+                    padding: 2px;
+                  }
+                }
+
+                span {
+                  display: inline-block;
+                  margin: 0 4px;
+                }
+
               }
 
               .lock {
