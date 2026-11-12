@@ -28,6 +28,25 @@ function loadViewPanel() {
 }
 
 // =================================================
+// URLパラメータによるタブの初期選択
+// =================================================
+function selectTabFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const targetQuizId = params.get("quiz");
+
+  if(!targetQuizId) return;
+
+  const targetIndex = Array.from(viewPanels).findIndex(
+    (panel) => panel.id === targetQuizId
+  );
+
+  if (targetIndex !== -1 && tabButtons[targetIndex]) {
+    tabButtons[targetIndex].click();
+  }
+}
+
+
+// =================================================
 // タブ切り替えの画面制御
 // =================================================
 tabButtons.forEach((btn, index) => {
@@ -120,3 +139,4 @@ answerInputs.forEach((input) => {
 
 // load実行
 loadViewPanel();
+selectTabFromUrl();
