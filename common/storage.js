@@ -161,6 +161,7 @@ document.getElementById("start-btn").addEventListener("click", () => {
 
         // アンロック時の処理(読み込んだQRコードの画面に遷移する)
         if(result.success && result.floor && result.quizId) {
+          // URLにquizIdの値を入れて、tabを指定しやすくする。
           const floorNum = result.floor.replace("f", "");
           const isRoot = window.location.pathname.endsWith("index.html") || window.location.pathname === "/" || !window.location.pathname.includes("/floor");
           const targetPath = isRoot ? `./floor${floorNum}/floor${floorNum}.html?quiz=${result.quizId}` : `../floor${floorNum}/floor${floorNum}.html?quiz=${result.quizId}`;
