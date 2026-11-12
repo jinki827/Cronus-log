@@ -85,14 +85,25 @@ function checkUnlockQuiz(code){
   
   // すでにアンロック済みだったら、解放済みのコードであることをメッセージで返す。
   if (quizzes[quizId].unlock) {
-    return {success: true, message:`「 ${title} 」はすでに解放済みです`};
+    return {
+      success: true,
+      message:`「 ${title} 」はすでに解放済みです`,
+      floor: floor,
+      quizId:quizId,
+      alreadyUnlocked: true
+    };
   }
 
   // アンロックして、ローカルストレージに保存。
   quizzes[quizId].unlock = true;
   updateFloorProgress(floor, quizzes);
   
-  return {success: true, message:`「 ${title} 」が解放されました！`};
+  return {
+    success: true,
+    message:`「 ${title} 」が解放されました！`,
+    floor: floor,
+    quizId: quizId
+  };
 }
 
 // [ハッシュ化]の関数
@@ -143,15 +154,19 @@ document.getElementById("start-btn").addEventListener("click", () => {
       (decodedText, decodedResult) => {
         // ① 読み取り成功時の処理
         closeScanner(); // 成功したら自動で閉じる
-        // alert("読み取り成功: " + decodedText);
 
         // ★ 読み取った文字列をQUIZ_PASSの中にあるものかを判定する関数に入れる。
         const result = checkUnlockQuiz(decodedText);
         alert(result.message);
-        
-        // 一応リロード
-        if(result.success && !result.message.includes("すでに解放済み")) {
-          window.location.reload();
+
+        // アンロック時の処理(読み込んだQRコードの画面に遷移する)
+        if(result.success && result.floor && result.quizId) {
+          const floorNum = result.floor.replace("f", "");
+          const isRoot = window.location.pathname.endsWith("index.html") || window.location.pathname === "/" || !window.location.pathname.includes("/floor");
+          const targetPath = isRoot ? `./floor${floorNum}/floor${floorNum}.html?quiz=${result.quizId}` : `../floor${floorNum}/floor${floorNum}.html?quiz=${result.quizId}`;
+
+          // 画面に遷移
+          window.location.href = targetPath;
         }
 
       },
