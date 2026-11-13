@@ -74,6 +74,7 @@ main {
       padding: 0 30px;
       p {
         margin-bottom: 20px;
+        line-height: 1.5;
         &.hello {
           margin-bottom: 50px;
         }
@@ -81,6 +82,11 @@ main {
           margin-top: 50px;
           text-align: right;
         }
+      }
+      span {
+        display: inline-block;
+        margin: 0 14px;
+        font-weight: 800;
       }
     }
   }
