@@ -5,7 +5,7 @@ const QUIZ_ANSWERS = {
   "f6-q1": "wy9l",
   "f6-q2": "10cla",
   "f6-q3": "wbc0",
-  "f6-boss": "1aoldhi",
+  "f6-boss": "6tz5pm",
   "f5-q1": "17l",
   "f5-q2": "18j",
   "f5-q3": "1vemuvx",
